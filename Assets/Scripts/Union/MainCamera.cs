@@ -3,13 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCamera : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+    GameObject o_player;
 
+    private void Start() {
+        Inif();
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Inif() {
+        o_player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+    private void Update() {
+      //  MoveCamera();
+    }
+
+    private void MoveCamera() {
+        transform.position = o_player.transform.position;
+        Vector3 t_vector3 = new Vector3();
+        t_vector3 = transform.position;
+        t_vector3.z += 35f;
+
+        transform.position = t_vector3;
     }
 }
