@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class MovingSystem : MonoBehaviour {
     public float pu_speed = 5f;
 
-    private Coord m_nextPos;
+    protected Coord m_nextPos;
     public bool m_moving;
     private Quaternion m_targetRotation;
 
@@ -17,6 +17,7 @@ public abstract class MovingSystem : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         Inif();
+        SonInif();
     }
 
     private void Inif() {
@@ -24,25 +25,34 @@ public abstract class MovingSystem : MonoBehaviour {
         m_targetRotation = new Quaternion();
 
         test_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        m_nextPos.SetPoint(transform.position);
     }
+
+    protected abstract void SonInif();
 
     // Update is called once per frame
     void Update() {
-        Test_StartMoving();
+        if (!m_moving)
+            GetNextPos();
+        //       Test_StartMoving();
         PosCheck();
         Move();
     }
 
     private void PosCheck() {
-        if (m_nextPos.CalDis(test_mainCamera.ScreenToWorldPoint(Input.mousePosition)) < 1.0f) {
+        if (m_nextPos.CalDis(transform.position)
+            < 1.0f) {
             //ウェイポイントに着かなければ移動を継続する
             m_moving = false;
         }
-        m_moving = true;
+        else
+            m_moving = true;
     }
 
     private void Test_StartMoving() {
-        Vector3 t_mousePos = test_mainCamera.ScreenToWorldPoint(
+        Vector3 t_mousePos = new Vector3();
+
+        t_mousePos = test_mainCamera.ScreenToWorldPoint(
            new Vector3(Input.mousePosition.x, Input.mousePosition.y,
            test_mainCamera.transform.position.y));
         m_nextPos.SetPoint(t_mousePos);

@@ -14,7 +14,7 @@ public class MainCamera : MonoBehaviour {
     }
 
     private void Update() {
-      //  MoveCamera();
+//        MoveCamera();
     }
 
     private void MoveCamera() {

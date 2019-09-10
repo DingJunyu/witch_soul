@@ -8,40 +8,58 @@ public class MouseRecorder : MonoBehaviour {
     private const float mc_maxPathLength = 100f;//プログラムの規制
     private const float mc_minPathLength = mc_interval;
 
-    private const float mc_interval = 5f;//マウスを記録する間隔
+    private const float mc_interval = 15f;//マウスを記録する間隔
     private int m_pointAmount;//記録ポイントの数
     private int t_nextPointNum;//次に取るデータ
     private int m_pointNumCount;
 
     private Coord[] m_pos;//座標を記録する
+    Vector3 t_mousePos;
 
     private bool m_recording = false;
-    private bool m_recorded = false;    
+    private bool m_recorded = false;
+    private bool m_readed = true;
+    private bool m_endMark = false;
 
     private Camera o_mainCamera;
+    GameObject gameManager;
 
     //メソッド
     public void RecordStart() {
         m_recording = true;
         m_recorded = true;
+        m_readed = false;
+        m_pointNumCount = 0;
     }
 
     public void RecordEnd() {
         m_recording = false;
+        t_nextPointNum = 0;
+        gameManager.GetComponent<GameManager>().changeSelectStatus(false);
     }
 
-    public Coord ReferNextPoint() {
+    public Coord ReferNextPoint(bool func_readOnly) {
         if (t_nextPointNum < m_pointNumCount) {
             t_nextPointNum++;//制限を超えなければ次のポイントに行く
         }
+        //最後の時にすべてのデータを消す
+        if (func_readOnly)
+            if (m_pos[t_nextPointNum].end) {
+                m_readed = true;
+            }
         return m_pos[t_nextPointNum];
     }
 
     public void ResetRecorder() {
         for (int i = 0; i < m_pointNumCount; i++) {
-            m_pos[m_pointNumCount].end = false;
+            m_pos[i].Reset();
         }
         m_pointNumCount = 0;
+        m_endMark = false;
+    }
+
+    public bool HasRecordData() {
+        return (!m_readed && m_endMark);
     }
 
     // Start is called before the first frame update
@@ -54,46 +72,65 @@ public class MouseRecorder : MonoBehaviour {
     private void CalPointAmount() {
         m_pointAmount = (int)(pu_pathLength / mc_interval);//unityから取ったデータでポイントの数を計算する
         m_pos = new Coord[m_pointAmount];
+        for (int i = 0; i < m_pointAmount; i++) {
+            m_pos[i] = new Coord();
+        }
     }
 
     private void Inif() {
-        o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
+            GetComponent<Camera>();
+        gameManager = GameObject.Find("GameManager");
+
+        t_mousePos = new Vector3();
     }
 
     // Update is called once per frame
     void Update() {
         Test_MousePush();
-//        Record();
+        Record();
+        CheckStatus();
     }
 
     private void Record() {
-        if (!m_recorded)//記録状態でなければそこで終わり
+        if (!m_recorded || m_endMark)//記録状態でなければそこで終わり
             return;
 
-        Vector3 t_mousePos = o_mainCamera.ScreenToWorldPoint(
+        t_mousePos =
+            o_mainCamera.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y,
-            o_mainCamera.transform.position.y));
+            o_mainCamera.transform.position.y));//上から見る時のマウスの座標
 
-        if (m_pointNumCount == 0 || m_pos[m_pointNumCount].CalDis(t_mousePos) > mc_interval) {
+        if (m_pointNumCount == 0 || 
+            m_pos[m_pointNumCount].CalDis(t_mousePos) > mc_interval) {
             m_pos[m_pointNumCount].SetPoint(t_mousePos);//実際の座標を渡す
+            m_pointNumCount += 1;
         }
-        if (!m_recording || m_pointAmount == m_pointNumCount) {
+        if (!m_recording || m_pointNumCount == m_pointAmount - 1) {
             m_pos[m_pointNumCount].end = true;
             m_recorded = false;
+            m_endMark = true;
         }
     }
 
-    
+    private void CheckStatus() {
+        if (m_readed)
+            ResetRecorder();
+    }
 
     public bool test_mousePushed;
     private void Test_MousePush() {
-        if (Input.GetMouseButtonDown(0)) {
-            test_mousePushed = true;
-            RecordStart();
-        }
+        //if (Input.GetMouseButtonDown(0)) {
+        //    test_mousePushed = true;
+        //    RecordStart();
+        //}
         if (Input.GetMouseButtonUp(0)) {
             test_mousePushed = false;
             RecordEnd();
         }
+    }
+
+    public bool endOfMove() {
+        return m_readed;
     }
 }

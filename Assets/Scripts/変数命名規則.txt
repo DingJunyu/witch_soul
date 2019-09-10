@@ -5,3 +5,4 @@ private readonly:mr_
 一次変数:t_
 テスト用:test_/関数:Test_
 他のオブジェクトのパーツなど:o_
+引数:func_

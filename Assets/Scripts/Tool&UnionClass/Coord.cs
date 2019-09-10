@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Coord {
     public Coord() {
+        x = 0;
+        z = 0;
         end = false;
     }
 
@@ -12,6 +14,10 @@ public class Coord {
     public float z;
 
     public bool end;//終りマーク
+
+    public void Reset() {
+        x = 0; z = 0; end = false;
+    }
 
     public void SetPoint(Vector2 vector) {
         x = vector.x;
