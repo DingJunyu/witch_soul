@@ -28,6 +28,9 @@ public class MouseRecorder : MonoBehaviour {
 
     //メソッド
     public void RecordStart() {
+        if (!m_readed || m_recording)
+            return;
+
         m_recording = true;
         m_recorded = true;
         m_readed = false;
@@ -38,6 +41,10 @@ public class MouseRecorder : MonoBehaviour {
         m_recording = false;
         t_nextPointNum = 0;
         o_gameManager.GetComponent<GameManager>().changeSelectStatus(false);
+    }
+
+    public void EndReading() {
+        m_readed = true;
     }
 
     public Coord ReferNextPoint(bool func_readOnly) {
@@ -148,13 +155,13 @@ public class MouseRecorder : MonoBehaviour {
 
     public bool test_mousePushed;
     private void Test_MousePush() {
-        //if (Input.GetMouseButtonDown(0)) {
-        //    test_mousePushed = true;
-        //    RecordStart();
-        //}
+        if (!m_recorded)
+            return;
+
         if (Input.GetMouseButtonUp(0) && !m_readed) {
             m_pos[m_pointNumCount].end = true;
             m_endMark = true;
+            m_recorded = false;
             test_mousePushed = false;
             RecordEnd();
         }

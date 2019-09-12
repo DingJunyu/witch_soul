@@ -22,4 +22,13 @@ public class MovingSystem_ForPlayer : MovingSystem {
     private void OnMouseDown() {
         o_gameManager.GetComponent<GameManager>().changeSelectStatus(true);
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.transform.tag == "Barrier") {
+            Debug.Log("hit");
+            m_moving = false;
+            m_nextPos.SetPoint(transform.position);
+            m_mouseRecorder.EndReading();
+        }
+    }
 }

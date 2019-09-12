@@ -56,8 +56,6 @@ public abstract class MovingSystem : MonoBehaviour {
         m_targetRotation.SetFromToRotation(transform.position, 
             m_nextPos.ReferVector3(transform.position.y));
         ////ターゲットに移動する
-        //transform.position = Vector3.Lerp(transform.position,
-        //    m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
         transform.position = Vector3.MoveTowards(transform.position,
               m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
         //回転する
