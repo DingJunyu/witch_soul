@@ -34,28 +34,18 @@ public abstract class MovingSystem : MonoBehaviour {
     void Update() {
         if (!m_moving)
             GetNextPos();
-        //       Test_StartMoving();
         PosCheck();
         Move();
     }
 
     private void PosCheck() {
         if (m_nextPos.CalDis(transform.position)
-            < 1.0f) {
+            == 0) {
             //ウェイポイントに着かなければ移動を継続する
             m_moving = false;
         }
         else
             m_moving = true;
-    }
-
-    private void Test_StartMoving() {
-        Vector3 t_mousePos = new Vector3();
-
-        t_mousePos = test_mainCamera.ScreenToWorldPoint(
-           new Vector3(Input.mousePosition.x, Input.mousePosition.y,
-           test_mainCamera.transform.position.y));
-        m_nextPos.SetPoint(t_mousePos);
     }
 
     private void Move() {
@@ -65,11 +55,21 @@ public abstract class MovingSystem : MonoBehaviour {
         //角度を設定する
         m_targetRotation.SetFromToRotation(transform.position, 
             m_nextPos.ReferVector3(transform.position.y));
-        //ターゲットに移動する
-        transform.position = Vector3.Lerp(transform.position,
-            m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
+        ////ターゲットに移動する
+        //transform.position = Vector3.Lerp(transform.position,
+        //    m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position,
+              m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
         //回転する
         transform.rotation = m_targetRotation * transform.rotation;
+
+        if (m_nextPos.CalDis(transform.position)
+            < .1f) {
+            transform.position = m_nextPos.ReferVector3(transform.position.y);
+        }
     }
 
+    protected void Test_ShowPos() {
+        Debug.Log(m_nextPos.x + "," + m_nextPos.z);
+    }
 }

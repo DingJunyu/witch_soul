@@ -15,28 +15,34 @@ public class Coord {
 
     public bool end;//終りマーク
 
+    public void Copy(Coord func_coord) {
+        x = func_coord.x;
+        z = func_coord.z;
+        end = func_coord.end;
+    }
+
     public void Reset() {
         x = 0; z = 0; end = false;
     }
 
-    public void SetPoint(Vector2 vector) {
-        x = vector.x;
-        z = vector.y;
+    public void SetPoint(Vector2 func_vector) {
+        x = func_vector.x;
+        z = func_vector.y;
     }
 
-    public void SetPoint(Vector3 vector) {
-        x = vector.x;
-        z = vector.z;
+    public void SetPoint(Vector3 func_vector) {
+        x = func_vector.x;
+        z = func_vector.z;
     }
 
-    public float CalDis(Vector2 vector) {
-        return Mathf.Sqrt((Mathf.Pow(x - vector.x, 2)) +
-            (Mathf.Pow(z - vector.y, 2)));
+    public float CalDis(Vector2 func_vector) {
+        return Mathf.Sqrt((Mathf.Pow(x - func_vector.x, 2)) +
+            (Mathf.Pow(z - func_vector.y, 2)));
     }
 
-    public float CalDis(Vector3 vector) {
-        return Mathf.Sqrt((Mathf.Pow(x - vector.x, 2)) +
-            (Mathf.Pow(z - vector.z, 2)));
+    public float CalDis(Vector3 func_vector) {
+        return Mathf.Sqrt((Mathf.Pow(x - func_vector.x, 2)) +
+            (Mathf.Pow(z - func_vector.z, 2)));
     }
 
     public Vector3 ReferVector3() {

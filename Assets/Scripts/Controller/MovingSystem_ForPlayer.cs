@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingSystem_ForPlayer : MovingSystem {
-    GameObject gameManager;
+    GameObject o_gameManager;
     MouseRecorder m_mouseRecorder;
 
     protected override void GetNextPos() {
         if (m_mouseRecorder.HasRecordData()) {
-            m_nextPos = m_mouseRecorder.ReferNextPoint(false);
+            m_nextPos.Copy(m_mouseRecorder.ReferNextPoint(false));
+            Test_ShowPos(); 
         }
     }
 
     protected override void SonInif() {
-        gameManager = GameObject.Find("GameManager");
+        o_gameManager = GameObject.Find("GameManager");
         m_mouseRecorder = GameObject.Find("MouseRecorder").
            GetComponent<MouseRecorder>();
     }
 
     private void OnMouseDown() {
-        gameManager.GetComponent<GameManager>().changeSelectStatus(true);
+        o_gameManager.GetComponent<GameManager>().changeSelectStatus(true);
     }
 }

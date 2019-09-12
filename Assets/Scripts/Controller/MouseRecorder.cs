@@ -8,9 +8,10 @@ public class MouseRecorder : MonoBehaviour {
     private const float mc_maxPathLength = 100f;//プログラムの規制
     private const float mc_minPathLength = mc_interval;
 
-    private const float mc_interval = 15f;//マウスを記録する間隔
+    private const float mc_interval = 1f;//マウスを記録する間隔
     private int m_pointAmount;//記録ポイントの数
     private int t_nextPointNum;//次に取るデータ
+    private int t_nextPointNumReadOnly;
     private int m_pointNumCount;
 
     private Coord[] m_pos;//座標を記録する
@@ -22,7 +23,8 @@ public class MouseRecorder : MonoBehaviour {
     private bool m_endMark = false;
 
     private Camera o_mainCamera;
-    GameObject gameManager;
+    GameObject o_gameManager;
+    GameObject o_player;
 
     //メソッド
     public void RecordStart() {
@@ -35,7 +37,7 @@ public class MouseRecorder : MonoBehaviour {
     public void RecordEnd() {
         m_recording = false;
         t_nextPointNum = 0;
-        gameManager.GetComponent<GameManager>().changeSelectStatus(false);
+        o_gameManager.GetComponent<GameManager>().changeSelectStatus(false);
     }
 
     public Coord ReferNextPoint(bool func_readOnly) {
@@ -43,11 +45,26 @@ public class MouseRecorder : MonoBehaviour {
             t_nextPointNum++;//制限を超えなければ次のポイントに行く
         }
         //最後の時にすべてのデータを消す
-        if (func_readOnly)
-            if (m_pos[t_nextPointNum].end) {
+        if (!func_readOnly)
+            if (t_nextPointNum == m_pointNumCount) {
                 m_readed = true;
+                t_nextPointNum--;
             }
         return m_pos[t_nextPointNum];
+    }
+
+    public Coord ReferNextPointAll() {
+        if (t_nextPointNumReadOnly < m_pointNumCount) {
+            t_nextPointNumReadOnly++;//制限を超えなければ次のポイントに行く
+        }
+        if (t_nextPointNumReadOnly == m_pointNumCount) {
+            t_nextPointNumReadOnly = 0;
+        }
+        return m_pos[t_nextPointNumReadOnly];
+    }
+
+    public int ReferPointNumCount() {
+        return m_pointNumCount;
     }
 
     public void ResetRecorder() {
@@ -80,20 +97,25 @@ public class MouseRecorder : MonoBehaviour {
     private void Inif() {
         o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
             GetComponent<Camera>();
-        gameManager = GameObject.Find("GameManager");
+        o_gameManager = GameObject.Find("GameManager");
+        o_player = GameObject.FindGameObjectWithTag("Player");
 
         t_mousePos = new Vector3();
+        t_nextPointNum = 0;
     }
 
     // Update is called once per frame
     void Update() {
         Test_MousePush();
         Record();
+    }
+
+    private void LateUpdate() {
         CheckStatus();
     }
 
     private void Record() {
-        if (!m_recorded || m_endMark)//記録状態でなければそこで終わり
+        if (!m_recorded)//記録状態でなければそこで終わり
             return;
 
         t_mousePos =
@@ -101,20 +123,26 @@ public class MouseRecorder : MonoBehaviour {
             new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             o_mainCamera.transform.position.y));//上から見る時のマウスの座標
 
-        if (m_pointNumCount == 0 || 
-            m_pos[m_pointNumCount].CalDis(t_mousePos) > mc_interval) {
+        if (m_pointNumCount == 0) {
+            m_pos[0].SetPoint(o_player.transform.position);
+            m_pointNumCount++;
+        }
+
+        if (m_pointNumCount != 0 &&
+            m_pos[m_pointNumCount - 1].CalDis(t_mousePos) > mc_interval) {
             m_pos[m_pointNumCount].SetPoint(t_mousePos);//実際の座標を渡す
-            m_pointNumCount += 1;
+            m_pointNumCount++;
         }
         if (!m_recording || m_pointNumCount == m_pointAmount - 1) {
             m_pos[m_pointNumCount].end = true;
             m_recorded = false;
             m_endMark = true;
+            RecordEnd();
         }
     }
 
     private void CheckStatus() {
-        if (m_readed)
+        if (m_readed && m_pointNumCount != 0)
             ResetRecorder();
     }
 
@@ -124,7 +152,9 @@ public class MouseRecorder : MonoBehaviour {
         //    test_mousePushed = true;
         //    RecordStart();
         //}
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0) && !m_readed) {
+            m_pos[m_pointNumCount].end = true;
+            m_endMark = true;
             test_mousePushed = false;
             RecordEnd();
         }

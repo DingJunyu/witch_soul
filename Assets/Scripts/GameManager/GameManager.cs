@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public bool m_playerSelected = false;
-    MouseRecorder m_mouseRecorder;
+    MouseRecorder o_mouseRecorder;
 
     // Start is called before the first frame update
     void Start() {
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Inif() {
-        m_mouseRecorder = GameObject.Find("MouseRecorder").
+        o_mouseRecorder = GameObject.Find("MouseRecorder").
             GetComponent<MouseRecorder>();
     }
 
@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
 
     public void changeSelectStatus(bool func_true) {
         m_playerSelected = func_true;
-        m_mouseRecorder.RecordStart();
+        if (func_true)
+            o_mouseRecorder.RecordStart();
     }
 }

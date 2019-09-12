@@ -14,14 +14,12 @@ public class MainCamera : MonoBehaviour {
     }
 
     private void Update() {
-//        MoveCamera();
+        MoveCamera();
     }
 
     private void MoveCamera() {
-        transform.position = o_player.transform.position;
-        Vector3 t_vector3 = new Vector3();
-        t_vector3 = transform.position;
-        t_vector3.z += 35f;
+        Vector3 t_vector3 = new Vector3(o_player.transform.position.x+3f,
+            transform.position.y,transform.position.z);
 
         transform.position = t_vector3;
     }
