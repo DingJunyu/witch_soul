@@ -6,6 +6,8 @@ using UnityEngine;
 public abstract class MovingSystem : MonoBehaviour {
     public float pu_speed = 5f;
 
+    private const float m_rotateSpeed = 0.5f;
+
     protected Coord m_nextPos;
     public bool m_moving;
     private Quaternion m_targetRotation;
@@ -52,17 +54,19 @@ public abstract class MovingSystem : MonoBehaviour {
         if (!m_moving)
             return;
 
-        //角度を設定する
-        m_targetRotation.SetFromToRotation(transform.position, 
-            m_nextPos.ReferVector3(transform.position.y));
         ////ターゲットに移動する
         transform.position = Vector3.MoveTowards(transform.position,
               m_nextPos.ReferVector3(transform.position.y), pu_speed * Time.deltaTime);
-        //回転する
-        transform.rotation = m_targetRotation * transform.rotation;
 
-        if (m_nextPos.CalDis(transform.position)
-            < .1f) {
+        //角度を設定して回る
+        Vector3 t_vector3 = m_nextPos.ReferVector3(transform.position.y) -
+            transform.position;
+        m_targetRotation = Quaternion.LookRotation(t_vector3);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation,
+            m_targetRotation, m_rotateSpeed);
+
+        if (m_nextPos.CalDis(transform.position) < .1f) {
             transform.position = m_nextPos.ReferVector3(transform.position.y);
         }
     }

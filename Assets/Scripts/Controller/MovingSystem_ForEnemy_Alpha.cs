@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MovingSystem_ForEnemy_Alpha : MovingSystem {
     public List<Vector2> pu_movingPoint;
-    private Vector2 m_nextPointOnList;
+    private int m_mark = 0;//統計用マーク
 
     protected override void GetNextPos() {
-        
+        if (m_mark < pu_movingPoint.Count) {
+            m_nextPos.SetPoint(pu_movingPoint[m_mark]);
+            m_mark++;
+        }
     }
 
     protected override void SonInif() {
-        pu_movingPoint = new List<Vector2>();
+        
     }
 }

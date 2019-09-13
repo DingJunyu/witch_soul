@@ -8,7 +8,7 @@ public class MouseRecorder : MonoBehaviour {
     private const float mc_maxPathLength = 100f;//プログラムの規制
     private const float mc_minPathLength = mc_interval;
 
-    private const float mc_interval = 1f;//マウスを記録する間隔
+    private const float mc_interval = 0.5f;//マウスを記録する間隔
     private int m_pointAmount;//記録ポイントの数
     private int t_nextPointNum;//次に取るデータ
     private int t_nextPointNumReadOnly;
