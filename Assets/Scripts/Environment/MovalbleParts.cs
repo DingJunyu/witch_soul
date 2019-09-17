@@ -6,6 +6,7 @@ public class MovalbleParts : MonoBehaviour {
     public float pu_movingSpeed;
     public float pu_movingDistance;
     public int pu_direct;//上0,下1,右2,左3
+    public bool pu_redo = true;
 
     enum list_Direct {
         upWard,
@@ -44,6 +45,9 @@ public class MovalbleParts : MonoBehaviour {
     }
 
     private void Moving() {
+        if (m_back && !pu_redo)
+            return;
+
         if (!m_back)
             transform.position = Vector3.MoveTowards(transform.position,
               m_targetPos, pu_movingSpeed * Time.deltaTime);

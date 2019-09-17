@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//直線で移動する
 public class MovingSystem_ForEnemy_Alpha : MovingSystem {
     public List<Vector2> pu_movingPoint;
     private int m_mark = 0;//統計用マーク

@@ -950,13 +950,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1243288452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc93602b3efc9ee4c8cf6a302d904a83, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fbf54c2e2c4b6e48910edd2aff4ce59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_speed: 3
+  pu_speed: 5
   m_moving: 0
-  pu_movingPoint:
-  - {x: 26, y: 10}
+  pu_movingTime: 15
+  pu_midPos: {x: 26, y: 5.88, z: 10}
+  pu_endPos: {x: 23, y: 5.88, z: 16}
+  pu_startMovingAtX: 1
+  m_startMoving: 0
+  m_moved: 0
 --- !u!54 &1243288458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1156,6 +1160,7 @@ MonoBehaviour:
   pu_movingSpeed: 2
   pu_movingDistance: 2
   pu_direct: 1
+  pu_redo: 1
 --- !u!1 &1749910488
 GameObject:
   m_ObjectHideFlags: 0
