@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MovingSystem_ForEnemy_Beta : MovingSystem {
+public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
     public float pu_movingTime = 5f;
     private float mc_minMovingTime = 5f;
     
@@ -11,49 +11,34 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem {
     public Vector3 pu_endPos;
     public float pu_startMovingAtX;
 
+    private bool m_startStatusChanged = false;
+
     private Vector3 m_startPos;
-    public bool m_startMoving = false;
-    public bool m_moved = false;
-    private float m_startTime = 0f  ;
-    private float m_maxTime = 0f;
+    protected float m_startTime = 0f;
+    protected float m_maxTime = 0f;
     private Percentage m_percentage;
 
     private GameObject o_player;
-
-    public void StartMove() {
-        m_startMoving = true;
-        m_startTime = Time.deltaTime;
-        m_maxTime = m_startTime + pu_movingTime;
-    }
 
     protected override void GetNextPos() {
         if (m_moved)
             return;
 
-        CheckPlayerPos();
-
         if (!m_startMoving)
             return;
 
-        m_percentage.Set(Time.deltaTime - m_startTime, 
+        if (m_startMoving && !m_startStatusChanged) {
+            m_startTime = Time.fixedTime;
+            m_maxTime = m_startTime + pu_movingTime;
+            m_startStatusChanged = true;
+        }
+
+        m_percentage.Set(Time.fixedTime - m_startTime, 
             m_maxTime - m_startTime);
         m_nextPos.SetPoint(Bezier());
         if (Time.fixedTime > m_maxTime) {
             m_startMoving = false;
             m_moved = true;
-        }
-    }
-
-    private void CheckPlayerPos() {
-        if (m_startMoving)
-            return;
-        if (pu_startMovingAtX == 0)
-            return;
-
-        if (o_player.transform.position.x > pu_startMovingAtX) {
-            m_startMoving = true;
-            m_startTime = Time.deltaTime;
-            m_maxTime = m_startTime + pu_movingTime;
         }
     }
 

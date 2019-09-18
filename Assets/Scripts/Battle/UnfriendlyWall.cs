@@ -19,10 +19,10 @@ public class UnfriendlyWall : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag != "Player" ||
-            m_lastDamageTime + pu_damageInterval > Time.fixedTime)
+            m_lastDamageTime + pu_damageInterval > Time.deltaTime)
             return;
 
         collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
-        m_lastDamageTime = Time.fixedTime;
+        m_lastDamageTime = Time.deltaTime;
     }
 }

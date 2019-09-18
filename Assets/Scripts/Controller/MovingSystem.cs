@@ -74,4 +74,18 @@ public abstract class MovingSystem : MonoBehaviour {
     protected void Test_ShowPos() {
         Debug.Log(m_nextPos.x + "," + m_nextPos.z);
     }
+
+    protected float CalRadian(Vector2 func_from, Vector2 func_to) {
+        float x = func_from.x - func_to.x;
+        float y = func_from.y - func_to.y;
+
+        float hypotenuse = Mathf.Sqrt(Mathf.Pow(x, 2f) + Mathf.Pow(y, 2f));
+
+        float cos = x / hypotenuse;
+        float radian = Mathf.Acos(cos);
+
+        radian = Mathf.Atan2(x, y);
+
+        return radian;
+    }
 }
