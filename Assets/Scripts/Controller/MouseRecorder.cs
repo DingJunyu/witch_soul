@@ -130,16 +130,18 @@ public class MouseRecorder : MonoBehaviour {
             new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             o_mainCamera.transform.position.y));//上から見る時のマウスの座標
 
+        //起動用処理
         if (m_pointNumCount == 0) {
             m_pos[0].SetPoint(o_player.transform.position);
             m_pointNumCount++;
         }
-
+        //記録処理
         if (m_pointNumCount != 0 &&
             m_pos[m_pointNumCount - 1].CalDis(t_mousePos) > mc_interval) {
             m_pos[m_pointNumCount].SetPoint(t_mousePos);//実際の座標を渡す
             m_pointNumCount++;
         }
+        //終了処理
         if (!m_recording || m_pointNumCount == m_pointAmount - 1) {
             m_pos[m_pointNumCount].end = true;
             m_recorded = false;

@@ -6,6 +6,8 @@ public class ShootingSystem : MonoBehaviour {
     public GameObject pu_bullet;
     private GameObject m_bullet;
 
+    private GameObject o_bullets;
+
     public float pu_range = 10f;
     public float pu_shootInterval = 2f;
     public float pu_damage = 1f;
@@ -14,7 +16,7 @@ public class ShootingSystem : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        o_bullets = GameObject.Find("Bullets");
     }
 
     // Update is called once per frame
@@ -23,13 +25,14 @@ public class ShootingSystem : MonoBehaviour {
     }
 
     private void CheckAndShoot() {
-        if (Time.fixedTime < m_lastShootedTime + pu_shootInterval)
+        if (Time.time < m_lastShootedTime + pu_shootInterval)
             return;
 
         m_bullet = Instantiate(pu_bullet, transform.position,
             transform.rotation);
         m_bullet.GetComponent<Bullet>().SetDamage(pu_damage);
         m_bullet.GetComponent<Bullet>().SetRange(pu_range);
-        m_lastShootedTime = Time.fixedTime;
+        m_bullet.transform.parent = o_bullets.transform;
+        m_lastShootedTime = Time.time;
     }
 }

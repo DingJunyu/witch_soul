@@ -9,7 +9,7 @@ public abstract class MovingSystem : MonoBehaviour {
     private const float m_rotateSpeed = 0.5f;
 
     protected Coord m_nextPos;
-    public bool m_moving;
+    protected bool m_moving;
     private Quaternion m_targetRotation;
 
     private Camera test_mainCamera;

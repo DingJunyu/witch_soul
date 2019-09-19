@@ -9,7 +9,7 @@ public class Hikari : MonoBehaviour {
     public float pu_damage = 1.0f;
     public float pu_damageInterval = 1.0f;
     private float m_lastDamageTime = 0f;
-    private float m_deadLine = 0;
+    public float m_deadLine = 0;
     private Vector3 m_thisPos;
 
     // Start is called before the first frame update
@@ -34,9 +34,9 @@ public class Hikari : MonoBehaviour {
     //プレーヤーの位置によってダメージを受ける
     private void CheckPlayerPos() {
         if (m_deadLine > o_player.transform.position.x) {
-            if (m_lastDamageTime + pu_damageInterval > Time.deltaTime) {
+            if (m_lastDamageTime + pu_damageInterval < Time.time) {
                 o_player.GetComponent<LifeSystem>().SufferDamage(pu_damage);
-                m_lastDamageTime = Time.deltaTime;
+                m_lastDamageTime = Time.time;
             }
         }
     }
