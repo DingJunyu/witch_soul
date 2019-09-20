@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Magic_Base : MonoBehaviour {
-    private GameObject o_player;
+    protected GameObject o_player;
 
     public float pu_continueTime;
     public bool pu_oneTime = false;
@@ -17,10 +17,11 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider func_other) {
-        
+        TakeEffectEnter(ref func_other);
     }
 
     protected abstract void TakeEffectStay(ref Collider func_other);
+    protected abstract void TakeEffectEnter(ref Collider func_other);
 
     // Start is called before the first frame update
     void Start() {

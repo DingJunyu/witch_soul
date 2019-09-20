@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
-    public bool m_playerSelected = false;
+    private bool m_playerSelected = false;
     MouseRecorder o_mouseRecorder;
 
     // Start is called before the first frame update

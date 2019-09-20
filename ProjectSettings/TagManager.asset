@@ -7,6 +7,7 @@ TagManager:
   - Barrier
   - Enemy
   - Magic
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - 
   - Magic
   - Enemy
-  - 
-  - 
+  - Shield
+  - Bullet
   - 
   - 
   - 
