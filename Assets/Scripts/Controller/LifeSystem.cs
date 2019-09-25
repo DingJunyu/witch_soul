@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeSystem : MonoBehaviour {
-    private float m_hitPoint;
+    public float m_hitPoint;
+    public float ReferHp() { return m_hitPoint; }
     public float pu_maxHitPoint;
     public bool pu_shouldBeRemove = true;
 

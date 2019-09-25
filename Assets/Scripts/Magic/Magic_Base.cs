@@ -72,8 +72,6 @@ public abstract class Magic_Base : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
-
         if (m_display) {
             MouseFollower();
             return;

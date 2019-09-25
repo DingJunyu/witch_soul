@@ -107,6 +107,6 @@ MonoBehaviour:
   pu_continueTime: 1
   pu_oneTime: 0
   pu_coolDownTime: 5
-  pu_magicConsumption: 0
+  pu_magicConsumption: 4
   pu_damage: 4
   pu_exploRate: 4

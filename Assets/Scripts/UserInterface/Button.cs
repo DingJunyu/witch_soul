@@ -52,8 +52,10 @@ public class Button : MonoBehaviour
         if (m_lastClickTime + pu_magic.GetComponent<Magic_Base>().ReferCD() > Time.time)
             return;
 
-        o_gameManager.SelectAMagic(pu_magic);
+        bool t_bool = !o_gameManager.SelectAMagic(pu_magic);
 
-        m_lastClickTime = Time.time;
+
+        if (t_bool)
+            m_lastClickTime = Time.time;
     }
 }

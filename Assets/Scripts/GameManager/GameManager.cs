@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour {
             
     }
 
-    public void SelectAMagic(GameObject func_magicSelected) {
-        o_magicDeployer.SetMagic(func_magicSelected);
+    public bool SelectAMagic(GameObject func_magicSelected) {
+        return o_magicDeployer.SetMagic(func_magicSelected);
     }
 
     public void ChangeSelectStatus(bool func_true) {
