@@ -20,11 +20,12 @@ public class MovingSystem_ForPlayer : MovingSystem {
     }
 
     private void OnMouseDown() {
-        o_gameManager.GetComponent<GameManager>().changeSelectStatus(true);
+        o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(true);
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "Barrier") {
+        if (collision.transform.tag == "Barrier" ||
+            collision.transform.tag == "Enemy") {
             Debug.Log("hit");
             m_moving = false;
             m_nextPos.SetPoint(transform.position);

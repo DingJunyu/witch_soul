@@ -12,4 +12,8 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
     public void StartMove() {
         m_startMoving = true;
     }
+
+    private void OnCollisionEnter(Collision collision) {
+        Destroy(gameObject);
+    }
 }

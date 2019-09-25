@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class Magic_Base : MonoBehaviour {
     protected GameObject o_player;
+    private Camera o_mainCamera;
+
+    private bool m_display = true;
 
     public float pu_continueTime;
     public bool pu_oneTime = false;
@@ -12,11 +15,29 @@ public abstract class Magic_Base : MonoBehaviour {
     public float pu_coolDownTime = 0f;
     public float pu_magicConsumption = 0f;//魔力使う量
 
+    public void UseThis() {
+        m_display = false;
+    }
+
+    public float ReferCD() {
+        return pu_coolDownTime;
+    }
+
+    public float ReferMC() {
+        return pu_magicConsumption;
+    }
+
     private void OnTriggerStay(Collider func_other) {
+        if (m_display)
+            return;
+
         TakeEffectStay(ref func_other);
     }
 
     private void OnTriggerEnter(Collider func_other) {
+        if (m_display)
+            return;
+
         TakeEffectEnter(ref func_other);
     }
 
@@ -32,11 +53,17 @@ public abstract class Magic_Base : MonoBehaviour {
     private void Inif() {
         o_player = GameObject.FindGameObjectWithTag("Player");
         m_startTime = Time.time;
+
+        o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
+            GetComponent<Camera>();
     }
     protected abstract void SonInif();
 
     private void UseMagic() {
         //マジックのところの関数を使う
+
+        if (m_display)
+            return;
 
         UseMagic_Son();
     }
@@ -45,6 +72,13 @@ public abstract class Magic_Base : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+
+
+        if (m_display) {
+            MouseFollower();
+            return;
+        }
+
         MagicEffectUpdate();
         ContinueTimeCheck();
     }
@@ -55,4 +89,18 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     protected abstract void MagicEffectUpdate();
+
+    private void MouseFollower() {
+        Vector3 t_mousePos = new Vector3();
+
+        t_mousePos =
+           o_mainCamera.ScreenToWorldPoint(
+           new Vector3(Input.mousePosition.x, Input.mousePosition.y,
+           o_mainCamera.transform.position.y));//上から見る時のマウスの座標
+
+        Coord t_coord = new Coord();
+        t_coord.SetPoint(t_mousePos);
+
+        transform.position = t_coord.ReferVector3();
+    }
 }

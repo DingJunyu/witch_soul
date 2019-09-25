@@ -12,6 +12,7 @@ public class Coord {
 
     public float x;
     public float z;
+    private const float y = 5;
 
     public bool end;//終りマーク
 
@@ -46,10 +47,10 @@ public class Coord {
     }
 
     public Vector3 ReferVector3() {
-        return new Vector3(x, 0, z);
+        return new Vector3(x, y, z);
     }
 
-    public Vector3 ReferVector3(float y) {
-        return new Vector3(x, y, z);
+    public Vector3 ReferVector3(float func_y) {
+        return new Vector3(x, func_y, z);
     }
 }

@@ -13,12 +13,17 @@ public class Button : MonoBehaviour
     public bool pu_skill = false;
 
     public GameObject pu_magic;
+    private GameManager o_gameManager;
+
+    private float m_lastClickTime = 0f;
 
     // Start is called before the first frame update
     void Start() {
         Button btn = this.GetComponent<Button>();
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
+
+        o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         entry.eventID = EventTriggerType.PointerClick;
 
@@ -33,6 +38,8 @@ public class Button : MonoBehaviour
 
         if (pu_closeThis)
             CloseThis();
+        if (pu_magic != default)
+            SelectMagic();
     }
 
     private void CloseThis() {//メニューを閉じる
@@ -42,6 +49,11 @@ public class Button : MonoBehaviour
     }
 
     private void SelectMagic() {
-        
+        if (m_lastClickTime + pu_magic.GetComponent<Magic_Base>().ReferCD() > Time.time)
+            return;
+
+        o_gameManager.SelectAMagic(pu_magic);
+
+        m_lastClickTime = Time.time;
     }
 }

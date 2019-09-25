@@ -40,7 +40,7 @@ public class MouseRecorder : MonoBehaviour {
     public void RecordEnd() {
         m_recording = false;
         t_nextPointNum = 0;
-        o_gameManager.GetComponent<GameManager>().changeSelectStatus(false);
+        o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(false);
     }
 
     public void EndReading() {

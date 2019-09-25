@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeSystem : MonoBehaviour {
-    public float m_hitPoint;
+    private float m_hitPoint;
     public float pu_maxHitPoint;
+    public bool pu_shouldBeRemove = true;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,6 +29,11 @@ public class LifeSystem : MonoBehaviour {
         m_hitPoint -= func_damage;
         if (m_hitPoint < 0)
             m_hitPoint = 0;
+
+        /********テスト用*********/
+        if (m_hitPoint == 0 && pu_shouldBeRemove)
+            Destroy(gameObject);
+        /*************************/
     }
 
     public void SufferHeal(float func_heal) {

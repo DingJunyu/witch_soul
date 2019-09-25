@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3813876440827642264}
   - component: {fileID: 3813876440827642265}
   - component: {fileID: 3813876440827642269}
-  m_Layer: 0
-  m_Name: MagicTest
+  m_Layer: 2
+  m_Name: MagicTest_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce19d759cbe3c8546b69bd36752bd453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_continueTime: 15
+  pu_continueTime: 1
   pu_oneTime: 0
-  pu_coolDownTime: 0
+  pu_coolDownTime: 5
   pu_magicConsumption: 0
-  pu_damage: 1
-  pu_exploRate: 0.9
+  pu_damage: 4
+  pu_exploRate: 4
