@@ -25,4 +25,13 @@ public class UnfriendlyWall : MonoBehaviour {
         collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
         m_lastDamageTime = Time.deltaTime;
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (transform.tag == "Enemy")
+            return;
+
+        if (other.transform.tag == "Bullet") {
+            Destroy(other.gameObject);
+        }
+    }
 }

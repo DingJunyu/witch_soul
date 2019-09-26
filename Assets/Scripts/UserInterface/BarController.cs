@@ -15,7 +15,7 @@ public class BarController : MonoBehaviour {
     private GameObject myRealParent;
 
     private Transform thisFilter;
-    private float multiRate;
+    private float multiRate = 8f;
     const float standardScreenX = 800;
 
     const float mc_correctionForSize = 8f;
@@ -40,7 +40,7 @@ public class BarController : MonoBehaviour {
     }
 
     private void SetSize() {
-        multiRate = Screen.width / standardScreenX * mc_correctionForSize;
+//        multiRate = Screen.width / standardScreenX * mc_correctionForSize;
         transform.parent.transform.localScale = new Vector2(multiRate, multiRate);
     }
 

@@ -7,12 +7,18 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(UnityEngine.EventSystems.EventTrigger))]
 public class Button : MonoBehaviour
 {
-    //使う時に一個しか選ばないで
-    public bool pu_closeThis = false;
-    public bool pu_detail = false;
-    public bool pu_skill = false;
+    public enum Effect {
+        none,
+        closeThis,
+        detail,
+        skill,
+        openOrClose
+    }
 
-    public GameObject pu_magic;
+    //使う時に一個しか選ばないで
+    public Effect m_effect = Effect.none;
+
+    public GameObject pu_objectHere;
     private GameManager o_gameManager;
 
     private float m_lastClickTime = 0f;
@@ -36,10 +42,13 @@ public class Button : MonoBehaviour
     /*クリック事件*/
     private void OnClick(BaseEventData pointData) {
 
-        if (pu_closeThis)
+        if (m_effect == Effect.closeThis)
             CloseThis();
-        if (pu_magic != default)
+        if (m_effect == Effect.skill)
             SelectMagic();
+        if (m_effect == Effect.openOrClose)
+            OpenOrClose();
+
     }
 
     private void CloseThis() {//メニューを閉じる
@@ -49,13 +58,17 @@ public class Button : MonoBehaviour
     }
 
     private void SelectMagic() {
-        if (m_lastClickTime + pu_magic.GetComponent<Magic_Base>().ReferCD() > Time.time)
+        if (m_lastClickTime + pu_objectHere.GetComponent<Magic_Base>().ReferCD() > Time.time)
             return;
 
-        bool t_bool = !o_gameManager.SelectAMagic(pu_magic);
+        bool t_bool = !o_gameManager.SelectAMagic(pu_objectHere);
 
 
         if (t_bool)
             m_lastClickTime = Time.time;
+    }
+
+    private void OpenOrClose() {
+        pu_objectHere.SetActive(!pu_objectHere.active);
     }
 }
