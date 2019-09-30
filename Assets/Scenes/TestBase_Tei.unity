@@ -605,17 +605,17 @@ PrefabInstance:
     - target: {fileID: 1386570929251154683, guid: f556ce5c83520b14088a514c742a33f2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 350.21606
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1386570929251154683, guid: f556ce5c83520b14088a514c742a33f2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5265.4385
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1386570929251154683, guid: f556ce5c83520b14088a514c742a33f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1351.9341
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1386570929251154683, guid: f556ce5c83520b14088a514c742a33f2,
         type: 3}
@@ -5303,6 +5303,85 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41243a148e62b1e44a65d7bcf143f103, type: 3}
+--- !u!1 &758958215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 758958216}
+  - component: {fileID: 758958218}
+  - component: {fileID: 758958217}
+  m_Layer: 5
+  m_Name: TextPlateForEndGame
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &758958216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758958215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1858963905}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 10, y: 47}
+  m_SizeDelta: {x: 333.1, y: 141.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &758958217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758958215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 80
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 80
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 5
+  m_Text: New Text
+--- !u!222 &758958218
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758958215}
+  m_CullTransparentMesh: 0
 --- !u!1001 &782164457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13181,8 +13260,24 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1299531865692180902, guid: fdb442299cd06af4e81490313027e4b9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299531866093937172, guid: fdb442299cd06af4e81490313027e4b9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.7058824
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb442299cd06af4e81490313027e4b9, type: 3}
+--- !u!224 &1858963905 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1299531866809813937, guid: fdb442299cd06af4e81490313027e4b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1858963904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1882089175
 PrefabInstance:
   m_ObjectHideFlags: 0

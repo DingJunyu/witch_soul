@@ -12,7 +12,7 @@ public class Coord {
 
     public float x;
     public float z;
-    private const float y = 5;
+    private const float y = 0;
 
     public bool end;//終りマーク
 
