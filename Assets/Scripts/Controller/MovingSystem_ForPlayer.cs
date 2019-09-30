@@ -24,12 +24,9 @@ public class MovingSystem_ForPlayer : MovingSystem {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "Barrier" ||
-            collision.transform.tag == "Enemy") {
-            Debug.Log("hit");
-            m_moving = false;
-            m_nextPos.SetPoint(transform.position);
-            m_mouseRecorder.EndReading();
-        }
+        Debug.Log("hit");
+        m_moving = false;
+        m_nextPos.SetPoint(transform.position);
+        m_mouseRecorder.EndReading();
     }
 }
