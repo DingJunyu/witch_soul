@@ -21,10 +21,6 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     public float ReferCD() {
-        if (m_firstTimeContact) {
-            m_firstTimeContact = false;
-            return 0;
-        }
         return pu_coolDownTime;
     }
 
@@ -61,6 +57,8 @@ public abstract class Magic_Base : MonoBehaviour {
 
         o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
             GetComponent<Camera>();
+
+        m_firstTimeContact = true;
     }
     protected abstract void SonInif();
 

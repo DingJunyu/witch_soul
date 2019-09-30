@@ -27,6 +27,6 @@ public class MovingSystem_ForPlayer : MovingSystem {
         Debug.Log("hit");
         m_moving = false;
         m_nextPos.SetPoint(transform.position);
-        m_mouseRecorder.EndReading();
+        m_mouseRecorder.EndReading();   
     }
 }

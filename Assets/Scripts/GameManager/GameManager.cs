@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
     private GameObject o_button_replay;
     private GameObject o_button_returnToMenu;
 
+    private bool m_endMark = false;
+
     // Start is called before the first frame update
     void Start() {
         Inif();
@@ -52,21 +54,24 @@ public class GameManager : MonoBehaviour {
 
     private void CheckGameStatus() {
         if (o_player.transform.position.x > pu_endLine) {
-            Debug.Log("End");
+            if (m_endMark)
+                return;
+            m_endMark = true;
             o_textPlateForEndGame_text.text = "Clear";
             EndGameMenu(true);
         }
         if (!o_player.GetComponent<LifeSystem>().ReferAlive()) {
+            if (m_endMark)
+                return;
+            m_endMark = true;
             o_textPlateForEndGame_text.text = "Game Over";
             EndGameMenu(true);
-            Debug.Log("Game Over");
-
         }
-            
     }
 
     public bool SelectAMagic(GameObject func_magicSelected) {
-        return o_magicDeployer.SetMagic(func_magicSelected);
+        bool t_answer = o_magicDeployer.SetMagic(func_magicSelected);
+        return t_answer;
     }
 
     public void ChangeSelectStatus(bool func_true) {
@@ -74,6 +79,4 @@ public class GameManager : MonoBehaviour {
         if (func_true)
             o_mouseRecorder.RecordStart();
     }
-
-    
 }

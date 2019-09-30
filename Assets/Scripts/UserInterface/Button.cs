@@ -34,7 +34,7 @@ public class Button : MonoBehaviour
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
-        if (GameObject.Find("GameManger") != null)
+//        if (GameObject.Find("GameManger") != null)
             o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         entry.eventID = EventTriggerType.PointerClick;
@@ -42,10 +42,9 @@ public class Button : MonoBehaviour
         entry.callback = new EventTrigger.TriggerEvent();
         entry.callback.AddListener(OnClick);
 
-        trigger.triggers.Add(entry);
+        m_lastClickTime = Time.time;
 
-        if (pu_objectHere != default)
-            pu_objectHere.SetActive(false);
+        trigger.triggers.Add(entry);
     }
 
     /*クリック事件*/
@@ -76,11 +75,15 @@ public class Button : MonoBehaviour
         if (m_lastClickTime + pu_objectHere.GetComponent<Magic_Base>().ReferCD() > Time.time)
             return;
 
-        bool t_bool = !o_gameManager.SelectAMagic(pu_objectHere);
-
+        bool t_bool = o_gameManager.SelectAMagic(pu_objectHere);
 
         if (t_bool)
             m_lastClickTime = Time.time;
+    }
+
+    public int ReferCD() {
+        return (int)(m_lastClickTime +
+            pu_objectHere.GetComponent<Magic_Base>().ReferCD() - Time.time);
     }
 
     private void OpenOrClose() {
