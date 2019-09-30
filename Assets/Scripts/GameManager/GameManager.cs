@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 
     private GameObject o_textPlateForEndGame;
     private Text o_textPlateForEndGame_text;
+    private GameObject o_button_replay;
+    private GameObject o_button_returnToMenu;
 
     // Start is called before the first frame update
     void Start() {
@@ -28,7 +30,19 @@ public class GameManager : MonoBehaviour {
 
         o_textPlateForEndGame = GameObject.Find("TextPlateForEndGame");
         o_textPlateForEndGame_text = o_textPlateForEndGame.GetComponent<Text>();
-        o_textPlateForEndGame.SetActive(false);
+
+        o_button_replay = GameObject.Find("Replay");
+
+        o_button_returnToMenu = GameObject.Find("ReturnToMenu");
+
+        EndGameMenu(false);
+
+    }
+
+    public void EndGameMenu(bool func_status) {
+        o_textPlateForEndGame.SetActive(func_status);
+        o_button_replay.SetActive(func_status);
+        o_button_returnToMenu.SetActive(func_status);
     }
 
     // Update is called once per frame
@@ -40,11 +54,11 @@ public class GameManager : MonoBehaviour {
         if (o_player.transform.position.x > pu_endLine) {
             Debug.Log("End");
             o_textPlateForEndGame_text.text = "Clear";
-            o_textPlateForEndGame.SetActive(true);
+            EndGameMenu(true);
         }
         if (!o_player.GetComponent<LifeSystem>().ReferAlive()) {
             o_textPlateForEndGame_text.text = "Game Over";
-            o_textPlateForEndGame.SetActive(true);
+            EndGameMenu(true);
             Debug.Log("Game Over");
 
         }

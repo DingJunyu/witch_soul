@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(UnityEngine.EventSystems.EventTrigger))]
 public class Button : MonoBehaviour
@@ -12,7 +13,11 @@ public class Button : MonoBehaviour
         closeThis,
         detail,
         skill,
-        openOrClose
+        openOrClose,
+        returnToMainMenu,
+        replay,
+        newGame,
+        exitGame
     }
 
     //使う時に一個しか選ばないで
@@ -29,7 +34,8 @@ public class Button : MonoBehaviour
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
-        o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (GameObject.Find("GameManger") != null)
+            o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         entry.eventID = EventTriggerType.PointerClick;
 
@@ -37,18 +43,27 @@ public class Button : MonoBehaviour
         entry.callback.AddListener(OnClick);
 
         trigger.triggers.Add(entry);
+
+        if (pu_objectHere != default)
+            pu_objectHere.SetActive(false);
     }
 
     /*クリック事件*/
     private void OnClick(BaseEventData pointData) {
-
         if (m_effect == Effect.closeThis)
             CloseThis();
         if (m_effect == Effect.skill)
             SelectMagic();
         if (m_effect == Effect.openOrClose)
             OpenOrClose();
-
+        if (m_effect == Effect.replay)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (m_effect == Effect.returnToMainMenu)
+            SceneManager.LoadScene("MainMenu");
+        if (m_effect == Effect.newGame)
+            SceneManager.LoadScene("TestBase_Tei");
+        if (m_effect == Effect.exitGame)
+            Application.Quit();
     }
 
     private void CloseThis() {//メニューを閉じる
@@ -69,6 +84,6 @@ public class Button : MonoBehaviour
     }
 
     private void OpenOrClose() {
-        pu_objectHere.SetActive(!pu_objectHere.active);
+        pu_objectHere.SetActive(!pu_objectHere.activeSelf);
     }
 }
