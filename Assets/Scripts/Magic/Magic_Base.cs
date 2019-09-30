@@ -11,6 +11,7 @@ public abstract class Magic_Base : MonoBehaviour {
     public float pu_continueTime;
     public bool pu_oneTime = false;
     private float m_startTime;
+    private bool m_firstTimeContact = true;
 
     public float pu_coolDownTime = 0f;
     public float pu_magicConsumption = 0f;//魔力使う量
@@ -20,6 +21,10 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     public float ReferCD() {
+        if (m_firstTimeContact) {
+            m_firstTimeContact = false;
+            return 0;
+        }
         return pu_coolDownTime;
     }
 
