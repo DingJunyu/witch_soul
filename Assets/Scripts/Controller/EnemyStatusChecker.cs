@@ -7,6 +7,8 @@ public class EnemyStatusChecker : MonoBehaviour {
 
     }
 
+    private float m_disToPlayer;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -16,6 +18,8 @@ public class EnemyStatusChecker : MonoBehaviour {
     void Update() {
 
     }
+    
+
 
     private void OnCollisionEnter(Collision collision) {
         //Destroy(gameObject);
