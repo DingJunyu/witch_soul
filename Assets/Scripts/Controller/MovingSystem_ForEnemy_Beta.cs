@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//放物線を利用する移動システム
 public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
     public float pu_movingTime = 5f;
     private float mc_minMovingTime = 5f;
@@ -51,6 +51,7 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
             pu_movingTime = mc_minMovingTime;
     }
 
+    //次のポイントを計算する関数
     private Vector3 Bezier() {
         Vector3 p0p1 = (1 - m_percentage.Get()) * m_startPos + 
             m_percentage.Get() * pu_midPos;

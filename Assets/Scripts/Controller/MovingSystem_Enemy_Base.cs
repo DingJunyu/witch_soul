@@ -9,11 +9,11 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
     protected override abstract void GetNextPos();
     protected override abstract void SonInif();
 
-    public void StartMove() {
-        m_startMoving = true;
+    protected override void SonUpdate() {
+        
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        Destroy(gameObject);
+    public void StartMove() {
+        m_startMoving = true;
     }
 }

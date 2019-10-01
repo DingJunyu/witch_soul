@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MovingSystem {
-    private float m_range = 30f;
+    private float pu_range = 90f;
     private float m_distanceMoved = 0f;
-    private const float max_range = 30f;
+    private const float max_range = 120f;
     private float m_damage = 1f;
+
+    private float m_startTime;
+    private const float m_continueTime = 10f;
 
     private GameObject o_player;
 
     public void SetRange(float func_range) {
-        m_range = func_range;
+        pu_range = func_range;
     }
 
     public void SetDamage(float func_damage) {
@@ -19,10 +22,7 @@ public class Bullet : MovingSystem {
     }
 
     protected override void GetNextPos() {
-        m_distanceMoved += pu_speed * Time.deltaTime;
-        if (m_range < m_distanceMoved) {
-            Destroy(this.gameObject);
-        }
+
     }
 
     protected override void SonInif() {
@@ -40,6 +40,22 @@ public class Bullet : MovingSystem {
             Mathf.Cos(t_angle) * max_range);
 
         m_nextPos.SetPoint(t_tagetPos);
+
+        m_startTime = Time.time;
+    }
+
+    protected override void SonUpdate() {
+        if (Time.time > m_startTime + m_continueTime)
+            Destroy(gameObject);
+
+        m_distanceMoved += pu_speed * Time.deltaTime;
+        if (pu_range <= m_distanceMoved) {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void timeChecker() {
+
     }
 
     private void OnTriggerEnter(Collider other) {

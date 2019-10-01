@@ -19,6 +19,10 @@ public class MovingSystem_ForPlayer : MovingSystem {
            GetComponent<MouseRecorder>();
     }
 
+    protected override void SonUpdate() {
+        
+    }
+
     private void OnMouseDown() {
         o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(true);
     }

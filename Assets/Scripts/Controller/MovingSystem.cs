@@ -38,6 +38,7 @@ public abstract class MovingSystem : MonoBehaviour {
             GetNextPos();
         PosCheck();
         Move();
+        SonUpdate();
     }
 
     private void PosCheck() {
@@ -49,6 +50,8 @@ public abstract class MovingSystem : MonoBehaviour {
         else
             m_moving = true;
     }
+
+    protected abstract void SonUpdate();
 
     private void Move() {
         if (!m_moving)
