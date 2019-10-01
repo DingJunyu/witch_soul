@@ -10,7 +10,7 @@ public class CoolDownTimeMarker : MonoBehaviour {
         temp_CD = transform.parent.GetComponent<Button>().
             ReferCD();
 
-        if (temp_CD < 0) {
+        if (temp_CD <= 0) {
             GetComponent<Text>().text = null;
             return;
         }
