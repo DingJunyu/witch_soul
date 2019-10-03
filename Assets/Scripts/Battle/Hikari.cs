@@ -20,7 +20,7 @@ public class Hikari : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         MoveAndUpdateDeadLine();
-        CheckPlayerPos();
+//        CheckPlayerPos();
     }
 
     //モデル・画像を移動する
@@ -38,6 +38,16 @@ public class Hikari : MonoBehaviour {
                 o_player.GetComponent<LifeSystem>().SufferDamage(pu_damage);
                 m_lastDamageTime = Time.time;
             }
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.transform.tag != "Player")
+            return;
+
+        if (m_lastDamageTime + pu_damageInterval < Time.time) {
+            other.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
+            m_lastDamageTime = Time.time;
         }
     }
 }
