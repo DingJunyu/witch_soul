@@ -8,6 +8,7 @@ public class EnemyStatusChecker : MonoBehaviour {
     }
 
     private float m_disToPlayer;
+    private GameObject o_player;
 
     // Start is called before the first frame update
     void Start() {
@@ -22,6 +23,7 @@ public class EnemyStatusChecker : MonoBehaviour {
 
 
     private void OnCollisionEnter(Collision collision) {
-        //Destroy(gameObject);
+        if (collision.transform.tag == "Player")
+            Destroy(collision.gameObject);  
     }
 }

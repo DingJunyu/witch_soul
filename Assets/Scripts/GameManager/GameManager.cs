@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour {
     private GameObject o_button_replay;
     private GameObject o_button_returnToMenu;
 
+    private GameObject o_enemyList;
+    private GameObject o_bulletList;
+
     private bool m_endMark = false;
 
     // Start is called before the first frame update
@@ -37,6 +40,9 @@ public class GameManager : MonoBehaviour {
 
         o_button_returnToMenu = GameObject.Find("ReturnToMenu");
 
+        o_enemyList = GameObject.Find("EnemyList");
+        o_bulletList = GameObject.Find("Bullets");
+
         EndGameMenu(false);
 
     }
@@ -45,6 +51,9 @@ public class GameManager : MonoBehaviour {
         o_textPlateForEndGame.SetActive(func_status);
         o_button_replay.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
+
+        o_enemyList.SetActive(!func_status);
+        o_bulletList.SetActive(!func_status);
     }
 
     // Update is called once per frame
