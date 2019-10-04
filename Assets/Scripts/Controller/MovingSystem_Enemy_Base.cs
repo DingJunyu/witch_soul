@@ -8,6 +8,9 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
 
     protected override abstract void GetNextPos();
     protected override abstract void SonInif();
+    protected override void OtherCollisionReact() {
+        
+    }
 
     protected override void SonUpdate() {
         
