@@ -64,4 +64,8 @@ public class Bullet : MovingSystem {
             Destroy(gameObject);
         }
     }
+
+    protected override void OtherCollisionReact() {
+
+    }
 }
