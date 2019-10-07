@@ -12,6 +12,8 @@ public abstract class CombatSystem : MonoBehaviour {
     public bool CanIAttack(float func_dis) {
         return pu_detectiveDis > func_dis;
     }
+    public void SetAttack() {
+    }
 
     private bool m_canIAttack = false;
 

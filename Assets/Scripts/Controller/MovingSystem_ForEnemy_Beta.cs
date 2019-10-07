@@ -9,7 +9,6 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
     
     public Vector3 pu_midPos;
     public Vector3 pu_endPos;
-    public float pu_startMovingAtX;
 
     private bool m_startStatusChanged = false;
 
