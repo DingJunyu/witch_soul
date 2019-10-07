@@ -11,6 +11,7 @@ public abstract class MovingSystem : MonoBehaviour {
 
     protected Coord m_nextPos;
     protected bool m_moving;
+    public bool ReferMoving() { return m_moving; }
     private Quaternion m_targetRotation;
     private Rigidbody m_rigidBody;
 
