@@ -9,7 +9,10 @@ public class MovingSystem_ForPlayer : MovingSystem {
     protected override void GetNextPos() {
         if (m_mouseRecorder.HasRecordData()) {
             m_nextPos.Copy(m_mouseRecorder.ReferNextPoint(false));
-            Test_ShowPos(); 
+            Test_ShowPos();
+        }
+        else {
+            m_nextPos.SetPoint(transform.position);
         }
     }
 
@@ -27,10 +30,7 @@ public class MovingSystem_ForPlayer : MovingSystem {
         o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(true);
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        Debug.Log("hit");
-        m_moving = false;
-        m_nextPos.SetPoint(transform.position);
-        m_mouseRecorder.EndReading();   
+    protected override void OtherCollisionReact() {
+        m_mouseRecorder.EndReading();
     }
 }
