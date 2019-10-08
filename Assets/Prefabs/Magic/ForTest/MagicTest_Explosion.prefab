@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3813876440827642269}
   - component: {fileID: 6699768188328512633}
   - component: {fileID: 7990113748997458889}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: MagicTest_Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,12 +59,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce19d759cbe3c8546b69bd36752bd453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_continueTime: 1
+  pu_continueTime: 2
   pu_oneTime: 0
   pu_coolDownTime: 5
   pu_magicConsumption: 4
   pu_damage: 4
-  pu_exploRate: 4
+  pu_exploRate: 3
 --- !u!33 &6699768188328512633
 MeshFilter:
   m_ObjectHideFlags: 0

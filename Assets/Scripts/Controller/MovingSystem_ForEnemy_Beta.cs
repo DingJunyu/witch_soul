@@ -19,12 +19,12 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
 
     private GameObject o_player;
 
-    protected override void GetNextPos() {
+    protected override bool GetNextPos() {
         if (m_moved)
-            return;
+            return false;
 
         if (!m_startMoving)
-            return;
+            return false;
 
         if (m_startMoving && !m_startStatusChanged) {
             m_startTime = Time.time;
@@ -39,6 +39,8 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
             m_startMoving = false;
             m_moved = true;
         }
+
+        return true;
     }
 
     protected override void SonInif() {

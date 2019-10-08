@@ -6,21 +6,27 @@ public class EnemyStatusChecker : MonoBehaviour {
     public float pu_startMovingAtX = 11f;
     public float pu_removeAtX = 30f;
 
-    enum enemyStatus {
+    public float pu_detectiveDis = 10f;
+
+    public enum enemyStatus {
+        None,
         Moving,
         Engaging,
         Dieing,
         Dead
     }
 
-    enemyStatus m_status;
+    public enemyStatus m_status;
+
+    private bool m_dieing = false;
 
     private float m_disToPlayer;
     private GameObject o_player;
 
-    private Animation m_animationController;
-    private MovingSystem m_movingSystem;
+    private AnimationControllerHelper m_animationController;
+    private MovingSystem_Enemy_Base m_movingSystem;
     private CombatSystem m_combatSystem;
+    private LifeSystem m_lifeSystem;
 
     // Start is called before the first frame update
     void Start() {
@@ -29,15 +35,22 @@ public class EnemyStatusChecker : MonoBehaviour {
 
     private void Inif() {
         o_player = GameObject.FindGameObjectWithTag("Player");
-        m_movingSystem = GetComponent<MovingSystem>();
+        m_movingSystem = GetComponent<MovingSystem_Enemy_Base>();
+        m_combatSystem = GetComponent<CombatSystem>();
+        m_lifeSystem = GetComponent<LifeSystem>();
+            
+        m_animationController = GetComponentInChildren<AnimationControllerHelper>();
     }
 
     // Update is called once per frame
     void Update() {
-        if (m_status != enemyStatus.Dead) {
+        if (!m_dieing) {
             AlivingUpdate();
         }
-        CheckDestroy();
+        CheckDestroy();//距離が離れていくと消す
+
+        CheckEnd();
+        AnimationUpdate();
     }
 
 
@@ -48,19 +61,58 @@ public class EnemyStatusChecker : MonoBehaviour {
     }
 
     private void CheckStatus() {
+        if (m_disToPlayer < pu_detectiveDis) {
+            if (m_combatSystem.CanIAttack()) {
+                m_combatSystem.Engage();
+                m_status = enemyStatus.Engaging;
+                return;
+            }
+        }
+
         CheckStartMoving();
-        if (m_movingSystem.ReferMoving())
+        if (m_movingSystem.ReferRealMoving()) {
             m_status = enemyStatus.Moving;
-        
+            return;
+        }
+
+        m_status = enemyStatus.None;
     }
+
+    public void KillMe() {
+        m_dieing = true;
+    }
+
+    private void CheckEnd() {
+        if (!m_lifeSystem.ReferAlive())
+            KillMe();
+
+        if (!m_dieing)
+            return;
+
+        if (m_status == enemyStatus.Dead)
+            Destroy(transform.gameObject);
+
+        m_status = enemyStatus.Dieing;
+    }
+
+    private void AnimationUpdate() {
+        m_animationController.SetAnimation(m_status);
+    }
+
+    public void SetStatus(enemyStatus func_enemyStatus) { m_status = func_enemyStatus; }
+    public void ResetStatus() { m_status = enemyStatus.None; }
 
     private void CalDis() {
         m_disToPlayer = Vector3.Distance(transform.position, o_player.transform.position);
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "Player")
-            Destroy(transform.gameObject);  
+        if (collision.transform.tag == "Player") {
+            m_status = enemyStatus.Dieing;
+            GetComponent<Collider>().enabled = false;
+            m_movingSystem.StopMove();
+            m_dieing = true;
+        }
     }
 
     private void CheckStartMoving() {

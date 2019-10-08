@@ -26,6 +26,8 @@ public class Button : MonoBehaviour
     public GameObject pu_objectHere;
     private GameManager o_gameManager;
 
+    bool t_bool;
+
     private float m_lastClickTime = 0f;
 
     // Start is called before the first frame update
@@ -79,6 +81,10 @@ public class Button : MonoBehaviour
 
         if (t_bool)
             m_lastClickTime = Time.time;
+    }
+
+    public void SetCD() {
+
     }
 
     public int ReferCD() {

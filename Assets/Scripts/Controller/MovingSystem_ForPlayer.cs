@@ -6,7 +6,7 @@ public class MovingSystem_ForPlayer : MovingSystem {
     GameObject o_gameManager;
     MouseRecorder m_mouseRecorder;
 
-    protected override void GetNextPos() {
+    protected override bool GetNextPos() {
         if (m_mouseRecorder.HasRecordData()) {
             m_nextPos.Copy(m_mouseRecorder.ReferNextPoint(false));
             Test_ShowPos();
@@ -14,6 +14,7 @@ public class MovingSystem_ForPlayer : MovingSystem {
         else {
             m_nextPos.SetPoint(transform.position);
         }
+        return true;
     }
 
     protected override void SonInif() {

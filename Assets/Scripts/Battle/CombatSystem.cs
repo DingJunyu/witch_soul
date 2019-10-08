@@ -7,13 +7,16 @@ public abstract class CombatSystem : MonoBehaviour {
     private float m_lastAttackedTime = 0f;
 
     public float pu_damage = 1f;
-    public float pu_detectiveDis = 10f;
 
-    public bool CanIAttack(float func_dis) {
-        return pu_detectiveDis > func_dis;
+    public void Engage() {
+        m_canIAttack = true;
     }
-    public void SetAttack() {
+
+    public void CeaseFire() {
+        m_canIAttack = false;
     }
+
+    public bool CanIAttack() { return Time.time < m_lastAttackedTime + pu_AttackInterval; }
 
     private bool m_canIAttack = false;
 
@@ -26,18 +29,17 @@ public abstract class CombatSystem : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        CheckAndAttack();
+        Attack();
     }
 
-    protected void CheckAndAttack() {
+    protected void Attack() {
         if (!m_canIAttack)
-            return;
-
-        if (Time.time < m_lastAttackedTime + pu_AttackInterval)
             return;
 
         SonCheckAndAttack();
         m_lastAttackedTime = Time.time;
+
+        m_canIAttack = false;
     }
 
     protected abstract void SonCheckAndAttack();

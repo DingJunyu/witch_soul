@@ -8,7 +8,7 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
 
     public float pu_startMovingAtX;
 
-    protected override abstract void GetNextPos();
+    protected override abstract bool GetNextPos();
     protected override abstract void SonInif();
     protected override void OtherCollisionReact() {
         
@@ -20,5 +20,9 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
 
     public void StartMove() {
         m_startMoving = true;
+    }
+
+    public void StopMove() {
+        m_startMoving = false;
     }
 }

@@ -30,11 +30,6 @@ public class LifeSystem : MonoBehaviour {
         m_hitPoint -= func_damage;
         if (m_hitPoint < 0)
             m_hitPoint = 0;
-
-        /********テスト用*********/
-        if (m_hitPoint == 0 && pu_shouldBeRemove)
-            Destroy(gameObject);
-        /*************************/
     }
 
     public void SufferHeal(float func_heal) {
