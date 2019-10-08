@@ -6,6 +6,8 @@ public abstract class MovingSystem_Enemy_Base : MovingSystem {
     protected bool m_startMoving = false;
     protected bool m_moved = false;
 
+    public float pu_startMovingAtX;
+
     protected override abstract void GetNextPos();
     protected override abstract void SonInif();
     protected override void OtherCollisionReact() {

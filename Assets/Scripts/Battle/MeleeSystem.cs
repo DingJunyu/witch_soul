@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeSystem : MonoBehaviour {
+public class MeleeSystem : CombatSystem {
     public GameObject pu_attackModel;
     private GameObject m_realAttackModel = default;
 
-    public float pu_damage;
-
-    // Start is called before the first frame update
-    void Start() {
-
+    protected override void SonInif() {
+        
     }
 
-    // Update is called once per frame
-    void Update() {
+    protected override void SonCheckAndAttack() {
         if (m_realAttackModel == null)
             Attack();
     }
