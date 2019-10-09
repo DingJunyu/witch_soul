@@ -34,7 +34,7 @@ public class Button : MonoBehaviour
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
-//        if (GameObject.Find("GameManger") != null)
+        if(m_effect == Effect.skill)
             o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         entry.eventID = EventTriggerType.PointerClick;

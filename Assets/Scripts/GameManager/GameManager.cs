@@ -84,6 +84,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ChangeSelectStatus(bool func_true) {
+        if (Time.timeScale != 1)
+            return;
+
         m_playerSelected = func_true;
         if (func_true)
             o_mouseRecorder.RecordStart();
