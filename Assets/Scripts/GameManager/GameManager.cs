@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour {
 
         EndGameMenu(false);
 
+        Time.timeScale = 1;
     }
 
     public void EndGameMenu(bool func_status) {
@@ -52,8 +53,7 @@ public class GameManager : MonoBehaviour {
         o_button_replay.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
 
-        o_enemyList.SetActive(!func_status);
-        o_bulletList.SetActive(!func_status);
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame

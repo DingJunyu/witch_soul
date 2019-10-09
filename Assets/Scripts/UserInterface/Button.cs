@@ -28,8 +28,6 @@ public class Button : MonoBehaviour
 
     bool t_bool;
 
-    private float m_lastClickTime = 0f;
-
     // Start is called before the first frame update
     void Start() {
         Button btn = this.GetComponent<Button>();
@@ -43,8 +41,6 @@ public class Button : MonoBehaviour
 
         entry.callback = new EventTrigger.TriggerEvent();
         entry.callback.AddListener(OnClick);
-
-        m_lastClickTime = Time.time;
 
         trigger.triggers.Add(entry);
     }
@@ -74,22 +70,7 @@ public class Button : MonoBehaviour
     }
 
     private void SelectMagic() {
-        if (m_lastClickTime + pu_objectHere.GetComponent<Magic_Base>().ReferCD() > Time.time)
-            return;
-
         bool t_bool = o_gameManager.SelectAMagic(pu_objectHere);
-
-        if (t_bool)
-            m_lastClickTime = Time.time;
-    }
-
-    public void SetCD() {
-
-    }
-
-    public int ReferCD() {
-        return (int)(m_lastClickTime +
-            pu_objectHere.GetComponent<Magic_Base>().ReferCD() - Time.time);
     }
 
     private void OpenOrClose() {

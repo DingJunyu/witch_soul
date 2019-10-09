@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class CoolDownTimeMarker : MonoBehaviour {
     // Update is called once per frame
     void Update() {
-        int temp_CD;
-        temp_CD = transform.parent.GetComponent<Button>().
-            ReferCD();
+        int temp_CD = 0;
 
         if (temp_CD <= 0) {
             GetComponent<Text>().text = null;

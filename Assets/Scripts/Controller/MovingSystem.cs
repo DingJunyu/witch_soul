@@ -4,14 +4,14 @@ using UnityEngine;
 
 //オブジェクトの移動を実現するクラス
 public abstract class MovingSystem : MonoBehaviour {
-    public float pu_speed = 5f;
+    [Range(1f,8f)]public float pu_speed = 5f;
     public float pu_high = 0f;
 
     private const float m_rotateSpeed = 0.5f;
 
     protected Coord m_nextPos;
     protected bool m_moving;
-    public bool m_realMoving;
+    protected bool m_realMoving;
     private bool m_getNextPos;
     private Vector3 m_oldPos;
     public bool ReferMoving() { return m_moving; }
@@ -102,10 +102,6 @@ public abstract class MovingSystem : MonoBehaviour {
         }
     }
 
-    protected void Test_ShowPos() {
-        Debug.Log(m_nextPos.x + "," + m_nextPos.z);
-    }
-
     protected float CalRadian(Vector2 func_from, Vector2 func_to) {
         float x = func_from.x - func_to.x;
         float y = func_from.y - func_to.y;
@@ -121,7 +117,6 @@ public abstract class MovingSystem : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        Debug.Log("hit");
         m_moving = false;
         m_nextPos.SetPoint(transform.position);
         OtherCollisionReact();

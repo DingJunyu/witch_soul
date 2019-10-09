@@ -10,6 +10,9 @@ public class MagicDeployer : MonoBehaviour {
     public bool ReferDeployerEnable() { return m_deployerEnable; }
 
     public bool SetMagic(GameObject func_magic_readToBeDeploy) {
+        if (m_magic_readToBeDeploy != default)//すでにスキルを持っています
+            return false;
+
         m_magic_readToBeDeploy = Instantiate(func_magic_readToBeDeploy, transform);
 
         if (!o_player.GetComponent<MagicSystem>().
@@ -45,6 +48,8 @@ public class MagicDeployer : MonoBehaviour {
             o_player.GetComponent<MagicSystem>().
                 UseMagic(m_magic_readToBeDeploy.GetComponent<Magic_Base>().ReferMC());
             m_deployerEnable = false;
+
+            m_magic_readToBeDeploy = default;
         }
     }
 }

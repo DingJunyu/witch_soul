@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LifeSystem : MonoBehaviour {
-    public float m_hitPoint;
+    private float m_hitPoint;
     public float ReferHp() { return m_hitPoint; }
-    public float pu_maxHitPoint;
+    [Range(1,30)]public float pu_maxHitPoint;
     public bool pu_shouldBeRemove = true;
 
     // Start is called before the first frame update

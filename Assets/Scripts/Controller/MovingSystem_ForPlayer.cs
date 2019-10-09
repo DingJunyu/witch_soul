@@ -9,7 +9,6 @@ public class MovingSystem_ForPlayer : MovingSystem {
     protected override bool GetNextPos() {
         if (m_mouseRecorder.HasRecordData()) {
             m_nextPos.Copy(m_mouseRecorder.ReferNextPoint(false));
-            Test_ShowPos();
         }
         else {
             m_nextPos.SetPoint(transform.position);
