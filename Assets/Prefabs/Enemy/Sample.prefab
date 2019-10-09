@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1193646551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1883231651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cca5fc6b8553ef48bb46a35b6cff08f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8093064021951314479
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +95,7 @@ MonoBehaviour:
   pu_high: 0
   pu_startMovingAtX: 1
   pu_movingTime: 6
-  pu_midPos: {x: 15, y: 0, z: -3.7}
+  pu_midPos: {x: 15, y: 0, z: -5}
   pu_endPos: {x: 4, y: 0, z: -7}
 --- !u!114 &8093064021951314464
 MonoBehaviour:
@@ -99,7 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_AttackInterval: 2
   pu_damage: 1
-  pu_detectiveDis: 10
   pu_bullet: {fileID: 7780792571612201384, guid: ae043d08ca8e928409e0cfef5dc26d1c,
     type: 3}
   pu_range: 10
@@ -130,8 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5f473b3f5e03a43bdbc8c2f29b39c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_startMovingAtX: 11
+  pu_startMovingAtX: 1
   pu_removeAtX: 30
+  pu_detectiveDis: 1
+  m_status: 0
 --- !u!1001 &1883046893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -141,7 +154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 185934, guid: c5bad295ed8f6754e9bd894fae5183f7, type: 3}
       propertyPath: m_Name
-      value: footman_Blue
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 472902, guid: c5bad295ed8f6754e9bd894fae5183f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -237,6 +250,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bad295ed8f6754e9bd894fae5183f7, type: 3}
+--- !u!1 &1883231651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185934, guid: c5bad295ed8f6754e9bd894fae5183f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883046893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1882862763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 472902, guid: c5bad295ed8f6754e9bd894fae5183f7,

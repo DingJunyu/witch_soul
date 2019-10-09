@@ -21,8 +21,8 @@ public class Bullet : MovingSystem {
         m_damage = func_damage;
     }
 
-    protected override void GetNextPos() {
-
+    protected override bool GetNextPos() {
+        return true;
     }
 
     protected override void SonInif() {
