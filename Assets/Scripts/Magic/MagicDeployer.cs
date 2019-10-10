@@ -51,5 +51,11 @@ public class MagicDeployer : MonoBehaviour {
 
             m_magic_readToBeDeploy = default;
         }
+
+        if (Input.GetMouseButtonDown(1)) {
+            Destroy(m_magic_readToBeDeploy);
+
+            m_deployerEnable = false;
+        }
     }
 }
