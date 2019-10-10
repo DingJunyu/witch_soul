@@ -107,4 +107,4 @@ MonoBehaviour:
   pu_continueTime: 4
   pu_oneTime: 0
   pu_coolDownTime: 6
-  pu_magicConsumption: 3
+  pu_magicComsumption: 1

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MagicSystem : MonoBehaviour {
-    public float pu_maxMagicPoint = 15;
+    public float pu_maxMagicPoint = 10;
     public float ReferMagicPoint() { return m_magicPoint; }
-    public float m_magicPoint;
+    private float m_magicPoint;
 
     public float pu_recoveryPerGap = 2f;
     private const float mc_gap = 3f;

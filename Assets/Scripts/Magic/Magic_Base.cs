@@ -14,7 +14,8 @@ public abstract class Magic_Base : MonoBehaviour {
     private bool m_firstTimeContact = true;
 
     public float pu_coolDownTime = 0f;
-    public float pu_magicConsumption = 0f;//魔力使う量
+    [Range(1, 4)] public int pu_magicComsumption;
+    private float m_magicConsumption = 1f;//魔力使う量
 
     public void UseThis() {
         m_display = false;
@@ -25,7 +26,7 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     public float ReferMC() {
-        return pu_magicConsumption;
+        return m_magicConsumption;
     }
 
     private void OnTriggerStay(Collider func_other) {
@@ -59,6 +60,7 @@ public abstract class Magic_Base : MonoBehaviour {
             GetComponent<Camera>();
 
         m_firstTimeContact = true;
+        m_magicConsumption = (int)pu_magicComsumption;
     }
     protected abstract void SonInif();
 
