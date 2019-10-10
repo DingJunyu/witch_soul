@@ -11454,6 +11454,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -71.840324
       objectReference: {fileID: 0}
+    - target: {fileID: 3000367957082520956, guid: 7a72bc3898add4b46bb46172fc1398ef,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.3695388
+      objectReference: {fileID: 0}
+    - target: {fileID: 3000367957082520956, guid: 7a72bc3898add4b46bb46172fc1398ef,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.4247768
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a72bc3898add4b46bb46172fc1398ef, type: 3}
 --- !u!1001 &1646207657
@@ -12341,6 +12351,30 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882933455, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 35.27749
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882933455, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -24.93118
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882933455, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -11.990124
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882856223, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -73.57482
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882856223, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -119.54196
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882856223, guid: 64485db095b908c488a077a956433ebc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 78.74541
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64485db095b908c488a077a956433ebc, type: 3}
