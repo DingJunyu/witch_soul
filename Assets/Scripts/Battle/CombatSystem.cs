@@ -16,7 +16,7 @@ public abstract class CombatSystem : MonoBehaviour {
         m_canIAttack = false;
     }
 
-    public bool CanIAttack() { return Time.time < m_lastAttackedTime + pu_AttackInterval; }
+    public bool CanIAttack() { return Time.time > m_lastAttackedTime + pu_AttackInterval; }
 
     private bool m_canIAttack = false;
 

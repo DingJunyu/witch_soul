@@ -38,8 +38,6 @@ public class EnemyStatusChecker : StatusChecker {
             m_status = statusData.Moving;
             return;
         }
-
-        m_status = statusData.None;
     }
 
     private void CalDis() {

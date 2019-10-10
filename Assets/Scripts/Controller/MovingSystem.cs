@@ -10,12 +10,12 @@ public abstract class MovingSystem : MonoBehaviour {
     private const float m_rotateSpeed = 0.5f;
 
     protected Coord m_nextPos;
-    protected bool m_moving;
-    protected bool m_realMoving;
+    protected bool m_moving = false;
+    protected bool m_realMoving = false;
     private bool m_getNextPos;
     private Vector3 m_oldPos;
     public bool ReferMoving() { return m_moving; }
-    public bool ReferRealMoving() { return m_realMoving; }
+    public bool ReferRealMoving() { return m_realMoving && m_moving; }
     private Quaternion m_targetRotation;
     private Rigidbody m_rigidBody;
 
