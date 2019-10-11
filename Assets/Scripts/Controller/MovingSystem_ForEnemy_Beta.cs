@@ -4,21 +4,25 @@ using UnityEngine;
 
 //放物線を利用する移動システム
 public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
-    private float m_movingTime;
+    protected float m_movingTime;
 
-    private const int mc_pointAmount = 30;
-    private float m_distance = 0f;
+    protected const int mc_pointAmount = 30;
+    protected float m_distance = 0f;
+
+    
+    private Vector3 m_midPos;
+    private Vector3 m_endPos;
 
     [Space]
-    public Vector3 pu_midPos;
-    public Vector3 pu_endPos;
+    public GameObject pu_midPosGO;
+    public GameObject pu_endPosGO;
 
-    private bool m_startStatusChanged = false;
+    protected bool m_startStatusChanged = false;
 
-    private Vector3 m_startPos;
+    protected Vector3 m_startPos;
     protected float m_startTime = 0f;
     protected float m_maxTime = 0f;
-    private Percentage m_percentage;
+    protected Percentage m_percentage;
 
     protected override bool GetNextPos() {
         if (m_moved)
@@ -48,6 +52,9 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
         m_percentage = new Percentage();
         m_startPos = transform.position;
 
+        m_midPos = pu_midPosGO.transform.position;
+        m_endPos = pu_endPosGO.transform.position;
+
         CalLength();
         Caltime();
     }
@@ -55,9 +62,9 @@ public class MovingSystem_ForEnemy_Beta : MovingSystem_Enemy_Base {
     //次のポイントを計算する関数
     private Vector3 Bezier(float func_percentage) {
         Vector3 p0p1 = (1 - func_percentage) * m_startPos +
-            func_percentage * pu_midPos;
-        Vector3 p1p2 = (1 - func_percentage) * pu_midPos +
-            func_percentage * pu_endPos; ;
+            func_percentage * m_midPos;
+        Vector3 p1p2 = (1 - func_percentage) * m_midPos +
+            func_percentage * m_endPos; ;
         Vector3 result = (1 - func_percentage) * p0p1 +
             func_percentage * p1p2;
 
