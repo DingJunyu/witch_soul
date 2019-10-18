@@ -22,6 +22,7 @@ public class EnemyStatusChecker : StatusChecker {
     protected override void AlivingUpdate() {
         CheckStatus();
         CalDis();
+        FacePlayer();
     }
 
     private void CheckStatus() {
@@ -42,6 +43,13 @@ public class EnemyStatusChecker : StatusChecker {
 
     private void CalDis() {
         m_disToPlayer = Vector3.Distance(transform.position, o_player.transform.position);
+    }
+
+    private void FacePlayer() {
+        if (m_status == statusData.Moving)
+            return;
+
+        transform.LookAt(o_player.transform);
     }
 
     private void OnCollisionEnter(Collision collision) {
