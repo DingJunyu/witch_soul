@@ -19,12 +19,6 @@ public class MovalbleParts : MonoBehaviour {
     public float pu_startMoveAtX;
     private const float mc_endMoveAtX = 25f;
 
-    private float m_disToPlayer;
-
-    private void CalDis() {
-        m_disToPlayer = Vector3.Distance(transform.position, o_player.transform.position);
-    }
-
     public bool pu_redo = true;
 
     public list_Direct pu_direct = list_Direct.none;
@@ -79,15 +73,12 @@ public class MovalbleParts : MonoBehaviour {
     }
 
     private void Check() {
-        CalDis();
-
         if (transform.position == m_targetPos)
             m_back = true;
         if (transform.position == m_startPos)
             m_back = false;
 
-        if (m_disToPlayer > mc_endMoveAtX
-            && o_player.transform.position.x > transform.position.x) {
+        if (o_player.transform.position.x > transform.position.x + mc_endMoveAtX) {
             Destroy(gameObject);
         }
     }

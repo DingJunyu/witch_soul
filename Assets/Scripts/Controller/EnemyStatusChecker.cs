@@ -60,8 +60,7 @@ public class EnemyStatusChecker : StatusChecker {
     }
 
     private void CheckDestroy() {
-        if (transform.position.x < o_player.transform.position.x &&
-            m_disToPlayer > mc_removeAtX) {
+        if (transform.position.x + mc_removeAtX < o_player.transform.position.x) {
             Destroy(gameObject);
         }
     }
