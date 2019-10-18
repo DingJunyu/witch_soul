@@ -16,6 +16,9 @@ public class MovalbleParts : MonoBehaviour {
     public float pu_movingSpeed;
     public float pu_movingDistance;
 
+    public float pu_startMoveAtX;
+    public float pu_endMoveAtX;
+
     public bool pu_redo = true;
 
     public list_Direct pu_direct = list_Direct.none;
@@ -24,10 +27,13 @@ public class MovalbleParts : MonoBehaviour {
     private Vector3 m_startPos;
     private Vector3 m_targetPos;
     private bool m_back = false;
+    private GameObject o_player;
 
     // Start is called before the first frame update
     void Start() {
         CalTargetPos();
+
+        o_player = GameObject.Find("Player");
     }
 
     private void CalTargetPos() {
@@ -47,6 +53,10 @@ public class MovalbleParts : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (o_player.transform.position.x < pu_startMoveAtX ||
+            o_player.transform.position.x > pu_endMoveAtX)
+            return;
+
         Moving();
         Check(); 
     }
