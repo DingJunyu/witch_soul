@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyStatusChecker : StatusChecker {
     public float pu_startMovingAtX = 11f;
-    public float pu_removeAtX = 30f;
+    private const float mc_removeAtX = 30f;
 
     public float pu_detectiveDis = 10f;
 
@@ -60,7 +60,8 @@ public class EnemyStatusChecker : StatusChecker {
     }
 
     private void CheckDestroy() {
-        if (pu_removeAtX < o_player.transform.position.x) {
+        if (transform.position.x < o_player.transform.position.x &&
+            m_disToPlayer > mc_removeAtX) {
             Destroy(gameObject);
         }
     }
