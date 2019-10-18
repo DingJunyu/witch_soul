@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnfriendlyWall : MonoBehaviour {
+    public bool pu_removable = false;
+
     public float pu_damage;
     public float pu_damageInterval = 1f;
     private float m_lastDamageTime = 0f;
@@ -24,6 +26,8 @@ public class UnfriendlyWall : MonoBehaviour {
 
         collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
         m_lastDamageTime = Time.deltaTime;
+        if (pu_removable)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other) {
