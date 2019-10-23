@@ -21,7 +21,7 @@ public class Magic_Explosion : Magic_DamageType {
             return;
 
         m_scale *= m_baseExploRate + 
-            (pu_exploRate * Time.deltaTime);
+            (pu_exploRate * Time.fixedDeltaTime);
         
 
         transform.localScale = m_scale;

@@ -21,18 +21,19 @@ public class UnfriendlyWall : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag != "Player" ||
-            m_lastDamageTime + pu_damageInterval > Time.deltaTime)
+            m_lastDamageTime + pu_damageInterval > Time.time)
             return;
 
         collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
-        m_lastDamageTime = Time.deltaTime;
+        m_lastDamageTime = Time.time;
         if (pu_removable)
             Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (transform.tag == "Enemy")
-            return;
+        if (transform.tag == "Enemy") {
+            other.GetComponent<StatusChecker>().SetStatus(StatusChecker.statusData.Dieing);
+        }
 
         if (other.transform.tag == "Bullet") {
             Destroy(other.gameObject);

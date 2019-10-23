@@ -76,7 +76,7 @@ public abstract class Magic_Base : MonoBehaviour {
     protected abstract void UseMagic_Son();
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (m_display) {
             MouseFollower();
             return;

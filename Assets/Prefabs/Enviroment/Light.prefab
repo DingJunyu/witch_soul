@@ -92,10 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9304bf1bbf733d744a8b601118f15121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_speed: 0.75
+  pu_speed: 0
   pu_damage: 1
   pu_damageInterval: 1
-  m_deadLine: 0
 --- !u!65 &306773617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -150,8 +149,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 0
-  m_Color: {r: 0.993973, g: 1, b: 0, a: 1}
-  m_Intensity: 150
+  m_Color: {r: 0.735849, g: 0.6673312, b: 0.2256141, a: 1}
+  m_Intensity: 500
   m_Range: 150
   m_SpotAngle: 21
   m_InnerSpotAngle: 14
