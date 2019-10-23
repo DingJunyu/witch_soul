@@ -20,12 +20,14 @@ public class UnfriendlyWall : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag != "Player" ||
-            m_lastDamageTime + pu_damageInterval > Time.time)
-            return;
-
-        collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
-        m_lastDamageTime = Time.time;
+        if (collision.transform.tag == "Enemy") {
+            collision.transform.GetComponent<LifeSystem>().SufferDamage(999);
+        }
+        if (collision.transform.tag == "Player" &&
+            m_lastDamageTime + pu_damageInterval < Time.time) {
+            collision.transform.GetComponent<LifeSystem>().SufferDamage(pu_damage);
+            m_lastDamageTime = Time.time;
+        }
         if (pu_removable)
             Destroy(gameObject);
     }

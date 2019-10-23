@@ -58,7 +58,7 @@ public class Button : MonoBehaviour
         if (m_effect == Effect.returnToMainMenu)
             SceneManager.LoadScene("MainMenu");
         if (m_effect == Effect.newGame)
-            SceneManager.LoadScene("TestBase_Tei");
+            SceneManager.LoadScene("Stage_1");
         if (m_effect == Effect.exitGame)
             Application.Quit();
     }

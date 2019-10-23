@@ -4,6 +4,9 @@ using UnityEngine;
 
 //オブジェクトの移動を実現するクラス
 public abstract class MovingSystem : MonoBehaviour {
+    private bool m_end = false;
+    public void SetEnd() { m_end = true; }
+
     [Range(1f,8f)]public float pu_speed = 5f;
     public float pu_high = 0f;
 
@@ -81,6 +84,9 @@ public abstract class MovingSystem : MonoBehaviour {
     protected abstract void SonUpdate();
 
     private void Move() {
+        if (m_end)
+            return;
+
         if (!m_moving)
             return;
 

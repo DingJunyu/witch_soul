@@ -79,5 +79,6 @@ public abstract class StatusChecker : MonoBehaviour {
         }
 
         m_status = statusData.Dieing;
+        GetComponent<MovingSystem>().SetEnd();
     }
 }
