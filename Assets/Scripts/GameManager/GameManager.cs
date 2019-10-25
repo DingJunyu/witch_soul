@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 
     private GameObject o_textPlateForEndGame;
     private Text o_textPlateForEndGame_text;
+    private GameObject o_button_back;
     private GameObject o_button_replay;
     private GameObject o_button_returnToMenu;
 
@@ -36,8 +37,8 @@ public class GameManager : MonoBehaviour {
         o_textPlateForEndGame = GameObject.Find("TextPlateForEndGame");
         o_textPlateForEndGame_text = o_textPlateForEndGame.GetComponent<Text>();
 
+        o_button_back = GameObject.Find("BackToGame");
         o_button_replay = GameObject.Find("Replay");
-
         o_button_returnToMenu = GameObject.Find("ReturnToMenu");
 
         o_enemyList = GameObject.Find("EnemyList");
@@ -54,6 +55,15 @@ public class GameManager : MonoBehaviour {
         o_button_returnToMenu.SetActive(func_status);
 
         Time.timeScale = 0;
+    }
+
+    public void PauseGameMenu(bool func_status) {
+        o_textPlateForEndGame.SetActive(func_status);
+        o_button_replay.SetActive(func_status);
+        o_button_returnToMenu.SetActive(func_status);
+        o_button_back.SetActive(func_status);
+
+        Time.timeScale = func_status ? 0 : 1;
     }
 
     // Update is called once per frame
@@ -75,6 +85,13 @@ public class GameManager : MonoBehaviour {
             m_endMark = true;
             o_textPlateForEndGame_text.text = "Game Over";
             EndGameMenu(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            o_textPlateForEndGame_text.text = "Pause";
+            PauseGameMenu(true);
+        }
+        if (Time.timeScale != 0) {
+            PauseGameMenu(false);
         }
     }
 

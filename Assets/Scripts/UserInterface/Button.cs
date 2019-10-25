@@ -17,7 +17,8 @@ public class Button : MonoBehaviour
         returnToMainMenu,
         replay,
         newGame,
-        exitGame
+        exitGame,
+        backToGame
     }
 
     //使う時に一個しか選ばないで
@@ -55,6 +56,8 @@ public class Button : MonoBehaviour
             OpenOrClose();
         if (m_effect == Effect.replay)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (m_effect == Effect.backToGame)
+            Time.timeScale = 1;
         if (m_effect == Effect.returnToMainMenu)
             SceneManager.LoadScene("MainMenu");
         if (m_effect == Effect.newGame)
