@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndGameMenu(bool func_status) {
-        o_textPlateForEndGame.SetActive(func_status);
+        o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_replay.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
 
@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PauseGameMenu(bool func_status) {
-        o_textPlateForEndGame.SetActive(func_status);
+        o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_replay.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
         o_button_back.SetActive(func_status);

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5924145026405781658}
   - component: {fileID: 5924145026405781659}
   - component: {fileID: 5924145026405781639}
+  - component: {fileID: 912468329}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5924145026405781660}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 25.1, y: 2.82, z: 1.49}
-  m_LocalScale: {x: 19.7, y: 5.8, z: 4.13}
+  m_LocalScale: {x: 19.700031, y: 5.8, z: 4.1300077}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa866cd2c62f0c4468b72702427850c7, type: 2}
+  - {fileID: 2100000, guid: 5d2035e6ffc44124fafb49fa00018f8c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,6 +105,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7682a7ac48020df43b09bd8b76194664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_movingSpeed: 4
-  pu_movingDistance: 4
+  pu_movingSpeed: 2
+  pu_movingDistance: 7
+  pu_startMoveAtX: 87
+  pu_redo: 1
   pu_direct: 1
+--- !u!114 &912468329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5924145026405781660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd7143ff1cad01540af8a74a5cb50cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pu_removable: 0
+  pu_damage: 1
+  pu_damageInterval: 1

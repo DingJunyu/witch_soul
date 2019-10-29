@@ -104,6 +104,6 @@ public abstract class Magic_Base : MonoBehaviour {
         Coord t_coord = new Coord();
         t_coord.SetPoint(t_mousePos);
 
-        transform.position = t_coord.ReferVector3();
+        transform.position = t_coord.ReferVector3(0f);
     }
 }

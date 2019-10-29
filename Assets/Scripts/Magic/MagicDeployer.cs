@@ -43,6 +43,7 @@ public class MagicDeployer : MonoBehaviour {
         if (!m_deployerEnable)
             return;
 
+        //魔法を使う
         if (Input.GetMouseButtonDown(0)) {
             m_magic_readToBeDeploy.GetComponent<Magic_Base>().UseThis();
             o_player.GetComponent<MagicSystem>().
