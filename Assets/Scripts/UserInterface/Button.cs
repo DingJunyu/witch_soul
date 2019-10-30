@@ -16,6 +16,7 @@ public class Button : MonoBehaviour
         openOrClose,
         returnToMainMenu,
         replay,
+        changeScene,
         newGame,
         exitGame,
         backToGame
@@ -23,6 +24,9 @@ public class Button : MonoBehaviour
 
     //使う時に一個しか選ばないで
     public Effect m_effect = Effect.none;
+
+    [Header("遷移機能を有効にするときに名前を入れてください")]
+    public string pu_sceneName;
 
     public GameObject pu_objectHere;
     private GameManager o_gameManager;
@@ -35,8 +39,7 @@ public class Button : MonoBehaviour
         EventTrigger trigger = btn.gameObject.GetComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry();
 
-        if(m_effect == Effect.skill)
-            o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         entry.eventID = EventTriggerType.PointerClick;
 
@@ -64,6 +67,8 @@ public class Button : MonoBehaviour
             SceneManager.LoadScene("Stage_1");
         if (m_effect == Effect.exitGame)
             Application.Quit();
+        if (m_effect == Effect.changeScene)
+            o_gameManager.LoadScene(pu_sceneName);
     }
 
     private void CloseThis() {//メニューを閉じる

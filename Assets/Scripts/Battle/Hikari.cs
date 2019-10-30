@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hikari : MonoBehaviour {
     GameObject o_player;
 
-    [Range(0f,1f)]public float pu_speed = 0.5f;
+    [Range(0f,1.75f)]public float pu_speed = 0.5f;
     public float pu_damage = 1.0f;
     public float pu_damageInterval = 1.0f;
     private float m_lastDamageTime = 0f;

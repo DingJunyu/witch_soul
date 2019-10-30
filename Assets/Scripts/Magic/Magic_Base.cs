@@ -19,6 +19,7 @@ public abstract class Magic_Base : MonoBehaviour {
 
     public void UseThis() {
         m_display = false;
+        m_startTime = Time.fixedTime;
     }
 
     public float ReferCD() {
@@ -54,7 +55,6 @@ public abstract class Magic_Base : MonoBehaviour {
 
     private void Inif() {
         o_player = GameObject.FindGameObjectWithTag("Player");
-        m_startTime = Time.time;
 
         o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
             GetComponent<Camera>();
@@ -87,7 +87,7 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     private void ContinueTimeCheck() {
-        if (Time.time > m_startTime + pu_continueTime)
+        if (Time.fixedTime > m_startTime + pu_continueTime)
             Destroy(gameObject);
     }
 

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
+    public bool pu_inGame;
+
     private bool m_playerSelected = false;
     MouseRecorder o_mouseRecorder;
 
@@ -20,14 +23,22 @@ public class GameManager : MonoBehaviour {
     private GameObject o_enemyList;
     private GameObject o_bulletList;
 
+    public GameObject pu_loadingScene;
+    private GameObject m_loadingScene;
+    [SerializeField]
+    private bool m_amILoading = false;
+
     private bool m_endMark = false;
 
     // Start is called before the first frame update
     void Start() {
-        Inif();
+        if (pu_inGame)
+            Inif_InGame();
+        else
+            Inif_Menu();
     }
 
-    private void Inif() {
+    private void Inif_InGame() {
         o_mouseRecorder = GameObject.Find("MouseRecorder").
             GetComponent<MouseRecorder>();
         o_magicDeployer = GameObject.Find("MagicDeployer").
@@ -49,6 +60,14 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    private void Inif_Menu() {
+        Time.timeScale = 1;
+
+        m_loadingScene = Instantiate(pu_loadingScene, 
+            GameObject.Find("Canvas").gameObject.transform);
+        m_loadingScene.SetActive(false);
+    }
+
     public void EndGameMenu(bool func_status) {
         o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_replay.SetActive(func_status);
@@ -68,7 +87,8 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        CheckGameStatus();
+        if (pu_inGame)
+            CheckGameStatus();
     }
 
     private void CheckGameStatus() {
@@ -107,5 +127,25 @@ public class GameManager : MonoBehaviour {
         m_playerSelected = func_true;
         if (func_true)
             o_mouseRecorder.RecordStart();
+    }
+
+    IEnumerator LoadAsyncScene(string func_sceneName) {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(func_sceneName);
+        m_amILoading = true;
+
+        while (!asyncLoad.isDone) {
+            CheckMenuStatus(asyncLoad);
+            yield return null;
+        }
+    }
+
+    public void LoadScene(string func_sceneName) {
+        StartCoroutine(LoadAsyncScene(func_sceneName));
+    }
+
+    public void CheckMenuStatus(AsyncOperation func_asyncLoad) {
+        m_loadingScene.SetActive(m_amILoading);
+        m_loadingScene.GetComponentInChildren<BarController>().SetPercentage(
+            1f-func_asyncLoad.progress, 1f);
     }
 }

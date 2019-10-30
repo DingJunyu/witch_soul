@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce19d759cbe3c8546b69bd36752bd453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_continueTime: 1
+  pu_continueTime: 0.75
   pu_oneTime: 0
   pu_coolDownTime: 5
   pu_magicComsumption: 2
