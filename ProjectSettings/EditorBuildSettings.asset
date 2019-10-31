@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: d11784b2326c00048ba37deda2f13fdd
   - enabled: 1
-    path: Assets/Scenes/TestBase_Tei.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Scenes/Stage_1.unity
+    guid: 41a5b59b728fe2e499d06f90cc2f474b
   m_configObjects: {}

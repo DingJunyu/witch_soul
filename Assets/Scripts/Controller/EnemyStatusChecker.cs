@@ -52,15 +52,6 @@ public class EnemyStatusChecker : StatusChecker {
         transform.LookAt(o_player.transform);
     }
 
-    private void OnCollisionEnter(Collision collision) {
-        if (collision.transform.tag == "Player") {
-            m_status = statusData.Dieing;
-            GetComponent<Collider>().enabled = false;
-            GetComponent<MovingSystem_Enemy_Base>().StopMove();
-            m_dieing = true;
-        }
-    }
-
     private void CheckStartMoving() {
         if (pu_startMovingAtX < o_player.transform.position.x) {
             GetComponent<MovingSystem_Enemy_Base>().StartMove();

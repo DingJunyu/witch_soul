@@ -19,6 +19,7 @@ public abstract class Magic_Base : MonoBehaviour {
 
     public void UseThis() {
         m_display = false;
+        m_startTime = Time.fixedTime;
     }
 
     public float ReferCD() {
@@ -54,7 +55,6 @@ public abstract class Magic_Base : MonoBehaviour {
 
     private void Inif() {
         o_player = GameObject.FindGameObjectWithTag("Player");
-        m_startTime = Time.time;
 
         o_mainCamera = GameObject.FindGameObjectWithTag("MainCamera").
             GetComponent<Camera>();
@@ -76,7 +76,7 @@ public abstract class Magic_Base : MonoBehaviour {
     protected abstract void UseMagic_Son();
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (m_display) {
             MouseFollower();
             return;
@@ -87,7 +87,7 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     private void ContinueTimeCheck() {
-        if (Time.time > m_startTime + pu_continueTime)
+        if (Time.fixedTime > m_startTime + pu_continueTime)
             Destroy(gameObject);
     }
 
@@ -104,6 +104,6 @@ public abstract class Magic_Base : MonoBehaviour {
         Coord t_coord = new Coord();
         t_coord.SetPoint(t_mousePos);
 
-        transform.position = t_coord.ReferVector3();
+        transform.position = t_coord.ReferVector3(0f);
     }
 }

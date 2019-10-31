@@ -155,8 +155,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_speed: 3
   pu_high: 0
-  pu_midPos: {x: 15, y: 0, z: -5}
-  pu_endPos: {x: 4, y: 0, z: -7}
   pu_midPosGO: {fileID: 1890801045}
   pu_endPosGO: {fileID: 899988532}
 --- !u!114 &8093064021951314464
@@ -204,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_removable: 1
   pu_startMovingAtX: 1
-  pu_removeAtX: 30
   pu_detectiveDis: 15
 --- !u!1001 &1883046893
 PrefabInstance:

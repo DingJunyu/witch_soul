@@ -12,7 +12,7 @@ public class BarController : MonoBehaviour {
 
     const float pos = 12.5f;
 
-    private GameObject myRealParent;
+    private RectTransform m_myParentRectTrans;
 
     private Transform thisFilter;
     private float multiRate = 8f;
@@ -26,7 +26,7 @@ public class BarController : MonoBehaviour {
     }
 
     private void Awake() {
-//        myRealParent = transform.parent.parent.gameObject;
+        m_myParentRectTrans = transform.parent.GetComponent<RectTransform>();
     }
 
     private void Start() {
@@ -40,16 +40,14 @@ public class BarController : MonoBehaviour {
     }
 
     private void SetSize() {
-//        multiRate = Screen.width / standardScreenX * mc_correctionForSize;
         transform.parent.transform.localScale = new Vector2(multiRate, multiRate);
     }
 
     //入力されたデータからＨＰバーのステータスを設置します
     public void SetPercentage(float quant, float maxQuant) {
-
-        //ここの７はＨｐバーが正しく表示されるための修正値です
         transform.localPosition = new Vector2(
-            ((maxQuant - quant) / maxQuant * -pos) * multiRate / mc_correctionForPos,
-            0);
+            ((1 - (maxQuant - quant) / maxQuant) * 
+            m_myParentRectTrans.sizeDelta.x) - m_myParentRectTrans.sizeDelta.x
+            , 0);
     }
 }

@@ -17,6 +17,10 @@ public class AnimationControllerHelper : MonoBehaviour {
         m_statusChecker.SetStatus(func_status);
     }
 
+    //public void SetStatus(int func_status) {
+    //    m_statusChecker.SetStatus((StatusChecker.statusData)func_status);
+    //}
+
     [HideInInspector]
     public void SetAnimation(StatusChecker.statusData func_status) {
         m_animationController.SetInteger("status", (int)func_status);
