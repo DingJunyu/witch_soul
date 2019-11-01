@@ -18,7 +18,9 @@ public class Button : UnityEngine.UI.Button {
         changeScene,
         newGame,
         exitGame,
-        backToGame
+        backToGame,
+        setFullScreen,
+        setBGM
     }
 
     //使う時に一個しか選ばないで
@@ -32,6 +34,7 @@ public class Button : UnityEngine.UI.Button {
     private GameManager o_gameManager;
 
     private ButtonAudioController o_clickSource;
+    private GameObject o_mainCamera;
 
     bool t_bool;
 
@@ -39,6 +42,7 @@ public class Button : UnityEngine.UI.Button {
     protected override void Start() {
         o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         o_clickSource = GameObject.Find("Audio").GetComponent<ButtonAudioController>();
+        o_mainCamera = GameObject.Find("MainCamera");
     }
 
     /*クリック事件*/
@@ -46,24 +50,45 @@ public class Button : UnityEngine.UI.Button {
         o_clickSource.PlayClip(ButtonAudioController.AudioType.mouseClick);
         base.OnPointerClick(pointData);
 
-        if (m_effect == Effect.closeThis)
-            CloseThis();
-        if (m_effect == Effect.skill)
-            SelectMagic();
-        if (m_effect == Effect.openOrClose)
-            OpenOrClose();
-        if (m_effect == Effect.replay)
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        if (m_effect == Effect.backToGame)
-            Time.timeScale = 1;
-        if (m_effect == Effect.returnToMainMenu)
-            SceneManager.LoadScene("MainMenu");
-        if (m_effect == Effect.newGame)
-            SceneManager.LoadScene("Stage_1");
-        if (m_effect == Effect.exitGame)
-            Application.Quit();
-        if (m_effect == Effect.changeScene)
-            o_gameManager.LoadScene(pu_sceneName);
+        switch (m_effect) {
+            case Effect.closeThis:
+                CloseThis();break;
+
+            case Effect.skill:
+                SelectMagic();break;
+
+            case Effect.openOrClose:
+                OpenOrClose();break;
+
+            case Effect.replay:
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);break;
+
+            case Effect.backToGame:
+                Time.timeScale = 1;break;
+
+            case Effect.returnToMainMenu:
+                SceneManager.LoadScene("MainMenu"); break;
+
+            case Effect.newGame:
+                SceneManager.LoadScene("Stage_1"); break;
+
+            case Effect.exitGame:
+                Application.Quit(); break;
+
+            case Effect.changeScene:
+                o_gameManager.LoadScene(pu_sceneName);break;
+
+            case Effect.setFullScreen:
+                Screen.fullScreen = !Screen.fullScreen;
+                GetComponentInChildren<ButtonStatusChecker>().CheckStatus(); break;
+
+            case Effect.setBGM:
+                if (o_mainCamera.GetComponent<AudioSource>().isPlaying)
+                    o_mainCamera.GetComponent<AudioSource>().Stop();
+                else
+                    o_mainCamera.GetComponent<AudioSource>().Play();
+                GetComponentInChildren<ButtonStatusChecker>().CheckStatus(); break;
+        }
     }
 
     public override void OnPointerEnter(PointerEventData data) {
@@ -83,6 +108,6 @@ public class Button : UnityEngine.UI.Button {
 
     private void OpenOrClose() {
         pu_objectHere.SetActive(!pu_objectHere.activeSelf);
-    }   
+    }
 }
 

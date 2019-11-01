@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     private Text o_textPlateForEndGame_text;
     private GameObject o_button_back;
     private GameObject o_button_replay;
+    private GameObject o_button_option;
     private GameObject o_button_returnToMenu;
 
     private GameObject o_enemyList;
@@ -32,10 +33,16 @@ public class GameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        StandardLoading();
+
         if (pu_inGame)
             Inif_InGame();
         else
             Inif_Menu();
+    }
+
+    private void StandardLoading() {
+        GameObject.Find("SettingMenu").SetActive(false);
     }
 
     private void Inif_InGame() {
@@ -50,6 +57,7 @@ public class GameManager : MonoBehaviour {
 
         o_button_back = GameObject.Find("BackToGame");
         o_button_replay = GameObject.Find("Replay");
+        o_button_option = GameObject.Find("Setting");
         o_button_returnToMenu = GameObject.Find("ReturnToMenu");
 
         o_enemyList = GameObject.Find("EnemyList");
@@ -71,6 +79,7 @@ public class GameManager : MonoBehaviour {
     public void EndGameMenu(bool func_status) {
         o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_replay.SetActive(func_status);
+        o_button_option.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
 
         Time.timeScale = 0;
@@ -79,6 +88,7 @@ public class GameManager : MonoBehaviour {
     public void PauseGameMenu(bool func_status) {
         o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_replay.SetActive(func_status);
+        o_button_option.SetActive(func_status);
         o_button_returnToMenu.SetActive(func_status);
         o_button_back.SetActive(func_status);
 

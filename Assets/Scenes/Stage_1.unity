@@ -10482,7 +10482,7 @@ PrefabInstance:
     - target: {fileID: 3064096318030213815, guid: fb7422f568341f947a3652f94c96dd34,
         type: 3}
       propertyPath: m_Name
-      value: Main Camera
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 3064096318030213815, guid: fb7422f568341f947a3652f94c96dd34,
         type: 3}
@@ -18297,6 +18297,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 368779552313354229, guid: 64e3307ef6171cc499a02eeef75d4b03,
+        type: 3}
+      propertyPath: m_Text
+      value: "\u30EA\u30C8\u30E9\u30A4"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961916672376867014, guid: 64e3307ef6171cc499a02eeef75d4b03,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64e3307ef6171cc499a02eeef75d4b03, type: 3}
