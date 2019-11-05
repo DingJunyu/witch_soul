@@ -20,7 +20,8 @@ public class Button : UnityEngine.UI.Button {
         exitGame,
         backToGame,
         setFullScreen,
-        setBGM
+        setBGM,
+        resetTutorial
     }
 
     //使う時に一個しか選ばないで
@@ -76,7 +77,7 @@ public class Button : UnityEngine.UI.Button {
                 Application.Quit(); break;
 
             case Effect.changeScene:
-                o_gameManager.LoadScene(pu_sceneName);break;
+                o_gameManager.MyLoadScene(pu_sceneName);break;
 
             case Effect.setFullScreen:
                 Screen.fullScreen = !Screen.fullScreen;
@@ -88,6 +89,9 @@ public class Button : UnityEngine.UI.Button {
                 else
                     o_mainCamera.GetComponent<AudioSource>().Play();
                 GetComponentInChildren<ButtonStatusChecker>().CheckStatus(); break;
+
+            case Effect.resetTutorial:
+                PlayerPrefs.DeleteKey("Tutorial");break;
         }
     }
 

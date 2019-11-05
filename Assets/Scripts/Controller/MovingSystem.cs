@@ -49,6 +49,9 @@ public abstract class MovingSystem : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if (Time.timeScale != 1)
+            return;
+
         if (!m_moving)
             m_getNextPos = GetNextPos();
         PosCheck();

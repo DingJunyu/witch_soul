@@ -26,6 +26,10 @@ public class GameManager : MonoBehaviour {
 
     public GameObject pu_loadingScene;
     private GameObject m_loadingScene;
+
+    public GameObject pu_tutorial;
+    private GameObject m_tutorial;
+
     [SerializeField]
     private bool m_amILoading = false;
 
@@ -65,7 +69,13 @@ public class GameManager : MonoBehaviour {
 
         EndGameMenu(false);
 
-        Time.timeScale = 1;
+        if (!PlayerPrefs.HasKey("Tutorial")) {
+            m_tutorial = Instantiate(pu_tutorial,
+                GameObject.Find("Canvas").gameObject.transform);
+        }
+
+        else
+            Time.timeScale = 1;
     }
 
     private void Inif_Menu() {
@@ -140,8 +150,13 @@ public class GameManager : MonoBehaviour {
     }
 
     IEnumerator LoadAsyncScene(string func_sceneName) {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(func_sceneName);
         m_amILoading = true;
+        m_loadingScene.SetActive(m_amILoading);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(func_sceneName);
+
+        m_loadingScene.GetComponentInChildren<BarController>().SetPercentage(
+           1f - asyncLoad.progress, 1f);
 
         while (!asyncLoad.isDone) {
             CheckMenuStatus(asyncLoad);
@@ -149,13 +164,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void LoadScene(string func_sceneName) {
+    public void MyLoadScene(string func_sceneName) {
         StartCoroutine(LoadAsyncScene(func_sceneName));
     }
 
-    public void CheckMenuStatus(AsyncOperation func_asyncLoad) {
-        m_loadingScene.SetActive(m_amILoading);
+    public void CheckMenuStatus(AsyncOperation func_asyncLoad) { 
         m_loadingScene.GetComponentInChildren<BarController>().SetPercentage(
-            1f-func_asyncLoad.progress, 1f);
+            1f - func_asyncLoad.progress, 1f);
     }
 }
