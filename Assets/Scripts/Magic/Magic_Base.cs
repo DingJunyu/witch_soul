@@ -64,7 +64,7 @@ public abstract class Magic_Base : MonoBehaviour {
     }
     protected abstract void SonInif();
 
-    private void UseMagic() {
+    protected void UseMagic() {
         //マジックのところの関数を使う
 
         if (m_display)
