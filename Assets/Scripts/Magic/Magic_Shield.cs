@@ -14,6 +14,10 @@ public class Magic_Shield : Magic_WallType {
         
     }
 
+    protected override void UpdateBeforeUse() {
+
+    }
+
     protected override void MagicEffectUpdate() {
         transform.LookAt(o_player.transform.position);
     }

@@ -28,6 +28,10 @@ public abstract class Magic_DamageType : Magic_Base {
 
     }
 
+    protected override void UpdateBeforeUse() {
+
+    }
+
     protected override abstract void SonInif();
     protected override abstract void MagicEffectUpdate();
     protected override abstract void UseMagic_Son();

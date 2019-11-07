@@ -5,15 +5,15 @@ using UnityEngine;
 public abstract class Magic_HealAndBuff : Magic_Base {
     protected override void MagicEffectUpdate() {
         EffectHere();
+    }
 
+    protected override void UpdateBeforeUse() {
         GameObject.Find("MagicDeployer").GetComponent<MagicDeployer>().UseMagicHere();
     }
 
     protected abstract void EffectHere();
 
-    protected override void SonInif() {
-        
-    }
+    protected abstract override void SonInif();
 
     protected override void TakeEffectEnter(ref Collider func_other) { }
 

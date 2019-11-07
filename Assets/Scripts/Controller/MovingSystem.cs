@@ -7,7 +7,14 @@ public abstract class MovingSystem : MonoBehaviour {
     private bool m_end = false;
     public void SetEnd() { m_end = true; }
 
-    [Range(1f,8f)]public float pu_speed = 5f;
+    [Range(1f, 8f)] public float pu_speed = 5f;
+    public void SetSpeedUp(float func_speed,float func_time) {
+        m_tempSpeedUp = func_speed; m_speedUpContinueTime = func_time;
+        m_speedUpStartedTime = Time.time;
+    }
+    private float m_tempSpeedUp = 0f;
+    private float m_speedUpStartedTime = 0f;
+    private float m_speedUpContinueTime = 0f;
     public float pu_high = 0f;
 
     private const float m_rotateSpeed = 0.5f;
@@ -58,6 +65,7 @@ public abstract class MovingSystem : MonoBehaviour {
         Move();
         SonUpdate();
         DeActiveRigid();//rigidbodyの機能を無効化する
+        StatusChecker();
     }
 
     private void DeActiveRigid() {
@@ -95,7 +103,7 @@ public abstract class MovingSystem : MonoBehaviour {
 
         ////ターゲットに移動する
         transform.position = Vector3.MoveTowards(transform.position,
-              m_nextPos.ReferVector3(pu_high), pu_speed * Time.deltaTime);
+              m_nextPos.ReferVector3(pu_high), (pu_speed + m_tempSpeedUp) * Time.deltaTime);
 
         //角度を設定して回る
         Vector3 t_vector3 = m_nextPos.ReferVector3(pu_high) -
@@ -139,4 +147,9 @@ public abstract class MovingSystem : MonoBehaviour {
 
     protected abstract void OtherCollisionReact();
 
+    private void StatusChecker() {
+        //この部分は加速のステータスチェック
+        if (m_speedUpStartedTime + m_speedUpContinueTime < Time.time)
+            m_tempSpeedUp = 0f;
+    }
 }
