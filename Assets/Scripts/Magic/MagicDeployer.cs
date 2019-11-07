@@ -59,4 +59,17 @@ public class MagicDeployer : MonoBehaviour {
             m_deployerEnable = false;
         }
     }
+
+    public void UseMagicHere() {
+        if (!m_deployerEnable)
+            return;
+
+        m_magic_readToBeDeploy.GetComponent<Magic_Base>().UseThis();
+        o_player.GetComponent<MagicSystem>().
+            UseMagic(m_magic_readToBeDeploy.GetComponent<Magic_Base>().ReferMC());
+        m_deployerEnable = false;
+
+        m_magic_readToBeDeploy = default;
+
+    }
 }
