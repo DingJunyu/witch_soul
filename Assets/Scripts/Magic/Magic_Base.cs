@@ -79,6 +79,7 @@ public abstract class Magic_Base : MonoBehaviour {
     void FixedUpdate() {
         if (m_display) {
             MouseFollower();
+            UpdateBeforeUse();
             return;
         }
 
@@ -92,6 +93,7 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     protected abstract void MagicEffectUpdate();
+    protected abstract void UpdateBeforeUse();
 
     private void MouseFollower() {
         Vector3 t_mousePos = new Vector3();
