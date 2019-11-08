@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PauseGameMenu(bool func_status) {
+        o_textPlateForEndGame_text.text = "Pause";
+
         o_textPlateForEndGame.transform.parent.gameObject.SetActive(func_status);
         o_button_openPauseMenu.SetActive(!func_status);
         o_button_replay.SetActive(func_status);
@@ -130,7 +132,6 @@ public class GameManager : MonoBehaviour {
             EndGameMenu(true);
         }
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            o_textPlateForEndGame_text.text = "Pause";
             PauseGameMenu(true);
         }
         if (Time.timeScale != 0) {
