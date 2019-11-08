@@ -21,7 +21,8 @@ public class Button : UnityEngine.UI.Button {
         backToGame,
         setFullScreen,
         setBGM,
-        resetTutorial
+        resetTutorial,
+        pauseMenu
     }
 
     //使う時に一個しか選ばないで
@@ -92,6 +93,9 @@ public class Button : UnityEngine.UI.Button {
 
             case Effect.resetTutorial:
                 PlayerPrefs.DeleteKey("Tutorial");break;
+
+            case Effect.pauseMenu:
+                o_gameManager.PauseGameMenu(true);break;
         }
     }
 

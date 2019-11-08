@@ -46,6 +46,6 @@ MonoBehaviour:
   pu_continueTime: 0
   pu_oneTime: 0
   pu_coolDownTime: 0
-  pu_magicComsumption: 2
-  pu_speed: 2
-  pu_speedUpContinueTime: 5
+  pu_magicComsumption: 3
+  pu_speed: 5
+  pu_speedUpContinueTime: 1.5

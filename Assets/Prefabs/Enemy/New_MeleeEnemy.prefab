@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_speed: 5.14
   pu_high: 0
+  pu_movingEffect: {fileID: 0}
   pu_midPosGO: {fileID: 7505685287290370405}
   pu_endPosGO: {fileID: 7505685288447283396}
 --- !u!114 &1763682457041032918
@@ -100,6 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_maxHitPoint: 3
   pu_shouldBeRemove: 1
+  pu_recoveryEffect: {fileID: 955067719441540442, guid: 56a44babbc0a0414287e857ff2f74d2b,
+    type: 3}
+  pu_damageEffect: {fileID: 1555752057426322657, guid: 9294289dc11e24048ba88986bf977c77,
+    type: 3}
 --- !u!114 &2448965241790490207
 MonoBehaviour:
   m_ObjectHideFlags: 0
