@@ -11,6 +11,8 @@ public abstract class MovingSystem : MonoBehaviour {
     public void SetSpeedUp(float func_speed,float func_time) {
         m_tempSpeedUp = func_speed; m_speedUpContinueTime = func_time;
         m_speedUpStartedTime = Time.time;
+        GameObject temp_effect = Instantiate(pu_movingEffect, transform);
+        temp_effect.GetComponent<EffectLifeController>().pu_continueTime = func_time;
     }
     private float m_tempSpeedUp = 0f;
     private float m_speedUpStartedTime = 0f;
@@ -32,6 +34,9 @@ public abstract class MovingSystem : MonoBehaviour {
     private Camera test_mainCamera;
 
     protected abstract bool GetNextPos();
+
+    //エフェクトコントロール
+    public GameObject pu_movingEffect;
 
     // Start is called before the first frame update
     void Start() {
