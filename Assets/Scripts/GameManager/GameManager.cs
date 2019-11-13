@@ -160,7 +160,7 @@ public class GameManager : MonoBehaviour {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(func_sceneName);
 
         m_loadingScene.GetComponentInChildren<BarController>().SetPercentage(
-           1f - asyncLoad.progress, 1f);
+           asyncLoad.progress, 1f);
 
         while (!asyncLoad.isDone) {
             CheckMenuStatus(asyncLoad);
