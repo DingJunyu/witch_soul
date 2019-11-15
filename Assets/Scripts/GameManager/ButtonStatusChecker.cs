@@ -14,6 +14,10 @@ public abstract class ButtonStatusChecker : MonoBehaviour {
         CheckStatus();
     }
 
+    private void Update() {
+        CheckStatus();
+    }
+
     public abstract void CheckStatus();
 
     public void SetOn() {

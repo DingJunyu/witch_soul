@@ -4136,7 +4136,7 @@ PrefabInstance:
     - target: {fileID: 2658293452453047246, guid: 762d08c4dba128044a38617330082793,
         type: 3}
       propertyPath: pu_speed
-      value: 1.12
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2658293452453047241, guid: 762d08c4dba128044a38617330082793,
         type: 3}
@@ -13290,7 +13290,7 @@ PrefabInstance:
     - target: {fileID: 8015052663997577536, guid: 7a72bc3898add4b46bb46172fc1398ef,
         type: 3}
       propertyPath: pu_recoveryPerGap
-      value: 0.75
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8015052663997577536, guid: 7a72bc3898add4b46bb46172fc1398ef,
         type: 3}
@@ -13318,6 +13318,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2507290990065622172, guid: 902e15e0b3f9b5d458d28287ad616d98,
         type: 3}
+    - target: {fileID: 8015052663997577541, guid: 7a72bc3898add4b46bb46172fc1398ef,
+        type: 3}
+      propertyPath: pu_speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8015052663997577539, guid: 7a72bc3898add4b46bb46172fc1398ef,
         type: 3}
       propertyPath: pu_recoveryEffect
@@ -13333,7 +13338,7 @@ PrefabInstance:
     - target: {fileID: 8015052663997577539, guid: 7a72bc3898add4b46bb46172fc1398ef,
         type: 3}
       propertyPath: pu_maxHitPoint
-      value: 18
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a72bc3898add4b46bb46172fc1398ef, type: 3}
