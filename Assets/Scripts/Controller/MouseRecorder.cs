@@ -86,7 +86,7 @@ public class MouseRecorder : MonoBehaviour {
         return (!m_readed && m_endMark);
     }
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
         CalPointAmount();
@@ -111,7 +111,7 @@ public class MouseRecorder : MonoBehaviour {
         t_nextPointNum = 0;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         Test_MousePush();
         Record();

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CoolDownTimeMarker : MonoBehaviour {
-    // Update is called once per frame
+    
     void Update() {
         int temp_CD = 0;
 

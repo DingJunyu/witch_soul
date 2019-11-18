@@ -38,7 +38,7 @@ public abstract class MovingSystem : MonoBehaviour {
     //エフェクトコントロール
     public GameObject pu_movingEffect;
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
         SonInif();
@@ -59,7 +59,7 @@ public abstract class MovingSystem : MonoBehaviour {
 
     protected abstract void SonInif();
 
-    // Update is called once per frame
+    
     void Update() {
         if (Time.timeScale != 1)
             return;
@@ -106,7 +106,7 @@ public abstract class MovingSystem : MonoBehaviour {
         if (!m_moving)
             return;
 
-        ////ターゲットに移動する
+        //ターゲットに移動する
         transform.position = Vector3.MoveTowards(transform.position,
               m_nextPos.ReferVector3(pu_high), (pu_speed + m_tempSpeedUp) * Time.deltaTime);
 

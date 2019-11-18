@@ -12,12 +12,12 @@ public class LifeSystem : MonoBehaviour {
     public GameObject pu_recoveryEffect;
     public GameObject pu_damageEffect;
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();//初期化
     }
 
-    // Update is called once per frame
+    
     void Update() {
 
     }

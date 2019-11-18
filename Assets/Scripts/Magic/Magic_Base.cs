@@ -47,7 +47,7 @@ public abstract class Magic_Base : MonoBehaviour {
     protected abstract void TakeEffectStay(ref Collider func_other);
     protected abstract void TakeEffectEnter(ref Collider func_other);
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
         SonInif();
@@ -75,7 +75,7 @@ public abstract class Magic_Base : MonoBehaviour {
 
     protected abstract void UseMagic_Son();
 
-    // Update is called once per frame
+    
     void FixedUpdate() {
         if (m_display) {
             MouseFollower();

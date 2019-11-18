@@ -19,7 +19,7 @@ public class MagicSystem : MonoBehaviour {
         return m_magicPoint > func_magicConsumption;
     }
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
     }
@@ -29,7 +29,7 @@ public class MagicSystem : MonoBehaviour {
         m_lastRecoveryTime = Time.time;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         RecoverPerGap();
     }

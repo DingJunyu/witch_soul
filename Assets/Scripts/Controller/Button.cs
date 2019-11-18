@@ -40,7 +40,7 @@ public class Button : UnityEngine.UI.Button {
 
     bool t_bool;
 
-    // Start is called before the first frame update
+    
     protected override void Start() {
         o_gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         o_clickSource = GameObject.Find("Audio").GetComponent<ButtonAudioController>();

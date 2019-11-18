@@ -38,7 +38,7 @@ public class RightClickMenu : MonoBehaviour, IPointerExitHandler {
     public GameObject pu_button6;
     public GameObject pu_button7;
 
-    // Start is called before the first frame update
+    
     void Awake() {
         //初期化する時に親を指定する
         //この後の初期化によって、親が変更します。
@@ -89,7 +89,7 @@ public class RightClickMenu : MonoBehaviour, IPointerExitHandler {
                 0f);
     }
 
-    // Update is called once per frame
+    
     void Update() {
 
     }

@@ -9,7 +9,7 @@ public class PlayerBehaviorController : MonoBehaviour {
     LifeSystem m_lifeSystem;
     MagicSystem m_magicSystem;
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
     }
@@ -24,7 +24,7 @@ public class PlayerBehaviorController : MonoBehaviour {
         m_magicSystem = GetComponent<MagicSystem>();
     }
 
-    // Update is called once per frame
+    
     void Update() {
         CheckHpStatus();
         CheckMagicStatus();

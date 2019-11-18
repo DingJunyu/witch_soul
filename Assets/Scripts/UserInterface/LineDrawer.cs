@@ -14,7 +14,7 @@ public class LineDrawer : MonoBehaviour {
     private bool m_cleared;
     private bool m_dataReaded;
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
     }
@@ -36,7 +36,7 @@ public class LineDrawer : MonoBehaviour {
     }
 
 
-    // Update is called once per frame
+    
     void Update() {
         if (o_mouseRecorder.HasRecordData()) {
             if (m_cleared)

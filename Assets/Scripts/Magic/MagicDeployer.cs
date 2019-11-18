@@ -25,7 +25,7 @@ public class MagicDeployer : MonoBehaviour {
         return true;
     }
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
     }
@@ -34,7 +34,7 @@ public class MagicDeployer : MonoBehaviour {
         o_player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
+    
     void Update() {
         CheckDeployStatus();
     }

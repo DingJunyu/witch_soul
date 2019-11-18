@@ -6,12 +6,12 @@ public class EffectLifeController : MonoBehaviour {
     public float pu_continueTime = 1f;
     private float m_startTime;
 
-    // Start is called before the first frame update
+    
     void Start() {
         m_startTime = Time.time;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         CheckLifeTime();
     }

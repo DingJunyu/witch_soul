@@ -26,7 +26,7 @@ public class MovableUI : MonoBehaviour
             realParent = transform.parent.gameObject;//ほんとの親を設置します
     }
 
-    // Start is called before the first frame update
+    
     void Start() {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -37,7 +37,7 @@ public class MovableUI : MonoBehaviour
         size = canvas.GetComponent<RectTransform>().sizeDelta;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         if (moveWithMouse)//マウスに従う
             MoveWithMouse();

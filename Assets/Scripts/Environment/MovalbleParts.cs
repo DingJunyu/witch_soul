@@ -29,7 +29,7 @@ public class MovalbleParts : MonoBehaviour {
     private bool m_back = false;
     private GameObject o_player;
 
-    // Start is called before the first frame update
+    
     void Start() {
         CalTargetPos();
 
@@ -51,7 +51,7 @@ public class MovalbleParts : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
+    
     void Update() {
         if (o_player.transform.position.x < pu_startMoveAtX)
             return;

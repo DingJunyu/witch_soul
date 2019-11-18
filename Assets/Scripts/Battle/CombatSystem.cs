@@ -23,14 +23,14 @@ public abstract class CombatSystem : MonoBehaviour {
 
     private bool m_canIAttack = false;
 
-    // Start is called before the first frame update
+    
     void Start() {
         SonInif();
     }
 
     protected abstract void SonInif();
 
-    // Update is called once per frame
+    
     void Update() {
         Attack();
     }

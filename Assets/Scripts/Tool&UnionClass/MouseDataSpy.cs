@@ -16,7 +16,7 @@ public class MouseDataSpy : MonoBehaviour {
 
     private Camera o_mainCamera;
 
-    // Start is called before the first frame update
+    
     void Start() {
         Inif();
     }
@@ -25,7 +25,7 @@ public class MouseDataSpy : MonoBehaviour {
         o_mainCamera = Camera.main;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         GetData();
         Change();

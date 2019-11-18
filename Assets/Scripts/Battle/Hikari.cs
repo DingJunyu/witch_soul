@@ -12,15 +12,14 @@ public class Hikari : MonoBehaviour {
 
     private Vector3 m_thisPos;
 
-    // Start is called before the first frame update
+    
     void Start() {
         o_player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
+    
     void Update() {
         MoveAndUpdateDeadLine();
-//        CheckPlayerPos();
     }
 
     //モデル・画像を移動する

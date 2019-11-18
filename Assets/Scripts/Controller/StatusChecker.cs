@@ -25,7 +25,7 @@ public abstract class StatusChecker : MonoBehaviour {
     protected CombatSystem m_combatSystem;
     protected LifeSystem m_lifeSystem;
 
-    // Start is called before the first frame update
+    
     void Start() {
         StandardInif();
         SonInif();
@@ -41,7 +41,7 @@ public abstract class StatusChecker : MonoBehaviour {
 
     protected abstract void SonInif();
 
-    // Update is called once per frame
+    
     void Update() {
         if (!m_dieing) {
             AlivingUpdate();

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
     private bool m_endMark = false;
 
-    // Start is called before the first frame update
+    
     void Start() {
         StandardLoading();
 
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
         Time.timeScale = func_status ? 0 : 1;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         if (pu_inGame)
             CheckGameStatus();

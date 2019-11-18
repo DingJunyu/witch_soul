@@ -12,7 +12,7 @@ public class StatusLoader : MonoBehaviour {
         Screen.fullScreen = m_fullScreen;
     }
 
-    // Update is called once per frame
+    
     void Update() {
         if (m_fullScreen != Screen.fullScreen) {
             m_fullScreen = Screen.fullScreen;
