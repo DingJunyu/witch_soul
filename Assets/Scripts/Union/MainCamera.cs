@@ -11,6 +11,11 @@ public class MainCamera : MonoBehaviour {
 
     private void Inif() {
         o_player = GameObject.FindGameObjectWithTag("Player");
+
+        Vector3 t_vector3 = new Vector3(o_player.transform.position.x + 3f,
+           transform.position.y, transform.position.z);
+
+        transform.position = t_vector3;
     }
 
     private void Update() {
@@ -18,9 +23,10 @@ public class MainCamera : MonoBehaviour {
     }
 
     private void MoveCamera() {
-        Vector3 t_vector3 = new Vector3(o_player.transform.position.x+3f,
+        Vector3 t_vector3 = new Vector3(o_player.transform.position.x + 3f,
             transform.position.y,transform.position.z);
 
-        transform.position = t_vector3;
+        transform.position = Vector3.MoveTowards(transform.position,
+            t_vector3, 3f * Time.deltaTime);
     }
 }
