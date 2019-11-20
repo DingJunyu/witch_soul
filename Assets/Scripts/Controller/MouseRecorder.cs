@@ -8,7 +8,7 @@ public class MouseRecorder : MonoBehaviour {
     private const float mc_maxPathLength = 100f;//プログラムの規制
     private const float mc_minPathLength = mc_interval;
 
-    private const float mc_interval = 0.5f;//マウスを記録する間隔
+    private const float mc_interval = 1.5f;//マウスを記録する間隔
     private int m_pointAmount;//記録ポイントの数
     private int t_nextPointNum;//次に取るデータ
     private int t_nextPointNumReadOnly;
@@ -113,7 +113,7 @@ public class MouseRecorder : MonoBehaviour {
 
     
     void Update() {
-        Test_MousePush();
+        MousePush();
         Record();
     }
 
@@ -155,8 +155,8 @@ public class MouseRecorder : MonoBehaviour {
             ResetRecorder();
     }
 
-    public bool test_mousePushed;
-    private void Test_MousePush() {
+    private bool m_mousePushed;
+    private void MousePush() {
         if (!m_recorded)
             return;
 
@@ -164,7 +164,7 @@ public class MouseRecorder : MonoBehaviour {
             m_pos[m_pointNumCount].end = true;
             m_endMark = true;
             m_recorded = false;
-            test_mousePushed = false;
+            m_mousePushed = false;
             RecordEnd();
         }
     }
