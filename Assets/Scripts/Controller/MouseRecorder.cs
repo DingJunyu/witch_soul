@@ -113,7 +113,7 @@ public class MouseRecorder : MonoBehaviour {
 
     
     void Update() {
-        MousePush();
+        CheckReleaseMouse();
         Record();
     }
 
@@ -130,7 +130,7 @@ public class MouseRecorder : MonoBehaviour {
             new Vector3(Input.mousePosition.x, Input.mousePosition.y,
             o_mainCamera.transform.position.y));//上から見る時のマウスの座標
 
-        //起動用処理
+        //起動用処理 
         if (m_pointNumCount == 0) {
             m_pos[0].SetPoint(o_player.transform.position);
             m_pointNumCount++;
@@ -156,7 +156,7 @@ public class MouseRecorder : MonoBehaviour {
     }
 
     private bool m_mousePushed;
-    private void MousePush() {
+    private void CheckReleaseMouse() {
         if (!m_recorded)
             return;
 
