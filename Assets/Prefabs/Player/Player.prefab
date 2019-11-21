@@ -125,9 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2dba7a4ab0170047917a0c30d3ec856, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_speed: 1.5
+  pu_speed: 1.2
   pu_high: 0
-  pu_movingEffect: {fileID: 0}
+  pu_movingEffect: {fileID: 2507290990065622172, guid: 902e15e0b3f9b5d458d28287ad616d98,
+    type: 3}
 --- !u!114 &8015052663997577539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,8 +143,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pu_maxHitPoint: 15
   pu_shouldBeRemove: 0
-  pu_recoveryEffect: {fileID: 0}
-  pu_damageEffect: {fileID: 0}
+  pu_recoveryEffect: {fileID: 955067719441540442, guid: 56a44babbc0a0414287e857ff2f74d2b,
+    type: 3}
+  pu_damageEffect: {fileID: 1555752057426322657, guid: 9294289dc11e24048ba88986bf977c77,
+    type: 3}
 --- !u!114 &8015052663997577536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d1466b5787fc74380fbad44df2bcf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pu_maxMagicPoint: 15
-  pu_recoveryPerGap: 2
+  pu_maxMagicPoint: 21
+  pu_recoveryPerGap: 0.55
 --- !u!114 &8015052663997577537
 MonoBehaviour:
   m_ObjectHideFlags: 0
