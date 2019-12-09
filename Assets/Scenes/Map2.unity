@@ -4998,13 +4998,13 @@ PrefabInstance:
       propertyPath: InitialModule.startSizeZ.minMaxState
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 19800004, guid: a087aa2c7016d2042a3b744b2afc4fb0, type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 19800006, guid: a087aa2c7016d2042a3b744b2afc4fb0, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: a087aa2c7016d2042a3b744b2afc4fb0, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a087aa2c7016d2042a3b744b2afc4fb0, type: 3}
