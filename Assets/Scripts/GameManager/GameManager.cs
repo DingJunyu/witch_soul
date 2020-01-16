@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour {
         m_loadingScene = Instantiate(pu_loadingScene, 
             GameObject.Find("Canvas").gameObject.transform);
         m_loadingScene.SetActive(false);
+
+        GameObject.Find("StageSelect").SetActive(false);
     }
 
     public void EndGameMenu(bool func_status) {
