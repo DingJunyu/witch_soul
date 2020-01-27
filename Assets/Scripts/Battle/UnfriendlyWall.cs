@@ -42,10 +42,10 @@ public class UnfriendlyWall : MonoBehaviour {
             m_lastDamageTime = Time.time;
         }
 
-        if (pu_removable) {
-            GetComponent<LifeSystem>().SufferDamage(999);
+        if (pu_removable) {  
             m_deadTime = Time.time;
             GetComponent<Rigidbody>().detectCollisions = false;
+            GetComponent<LifeSystem>().SufferDamage(999);
         }
     }
 

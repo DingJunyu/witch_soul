@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public bool pu_inGame;
+    public bool pu_needNextStage = false;
+
 
     private bool m_playerSelected = false;
     MouseRecorder o_mouseRecorder;
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour {
     private GameObject o_button_option;
     private GameObject o_button_returnToMenu;
     private GameObject o_button_openPauseMenu;
+    private GameObject o_button_nextStage;
 
     private GameObject o_enemyList;
     private GameObject o_bulletList;
@@ -48,6 +51,10 @@ public class GameManager : MonoBehaviour {
 
     private void StandardLoading() {
         GameObject.Find("SettingMenu").SetActive(false);
+
+        m_loadingScene = Instantiate(pu_loadingScene,
+            GameObject.Find("Canvas").gameObject.transform);
+        m_loadingScene.SetActive(false);
     }
 
     private void Inif_InGame() {
@@ -66,10 +73,16 @@ public class GameManager : MonoBehaviour {
         o_button_returnToMenu = GameObject.Find("ReturnToMenu");
         o_button_openPauseMenu = GameObject.Find("PauseTheGame");
 
+        if (pu_needNextStage) {
+            o_button_nextStage = GameObject.Find("NextStage");
+            o_button_nextStage.SetActive(false);
+        }
+
         o_enemyList = GameObject.Find("EnemyList");
         o_bulletList = GameObject.Find("Bullets");
 
         EndGameMenu(false);
+        PauseGameMenu(false);
 
         if (!PlayerPrefs.HasKey("Tutorial")) {
             m_tutorial = Instantiate(pu_tutorial,
@@ -83,9 +96,7 @@ public class GameManager : MonoBehaviour {
     private void Inif_Menu() {
         Time.timeScale = 1;
 
-        m_loadingScene = Instantiate(pu_loadingScene, 
-            GameObject.Find("Canvas").gameObject.transform);
-        m_loadingScene.SetActive(false);
+
 
         GameObject.Find("StageSelect").SetActive(false);
     }
@@ -124,6 +135,7 @@ public class GameManager : MonoBehaviour {
                 return;
             m_endMark = true;
             o_textPlateForEndGame_text.text = "Clear";
+            o_button_nextStage.SetActive(true);
             EndGameMenu(true);
         }
         if (!o_player.GetComponent<LifeSystem>().ReferAlive()) {
@@ -160,9 +172,8 @@ public class GameManager : MonoBehaviour {
         m_loadingScene.SetActive(m_amILoading);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(func_sceneName);
-
         m_loadingScene.GetComponentInChildren<BarController>().SetPercentage(
-           asyncLoad.progress, 1f);
+            asyncLoad.progress, 1f);
 
         while (!asyncLoad.isDone) {
             CheckMenuStatus(asyncLoad);

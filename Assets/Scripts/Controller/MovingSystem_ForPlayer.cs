@@ -26,9 +26,9 @@ public class MovingSystem_ForPlayer : MovingSystem {
         
     }
 
-    private void OnMouseDown() {
-        o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(true);
-    }
+    //private void OnMouseDown() {
+    //    o_gameManager.GetComponent<GameManager>().ChangeSelectStatus(true);
+    //}
 
     protected override void OtherCollisionReact() {
         m_mouseRecorder.EndReading();

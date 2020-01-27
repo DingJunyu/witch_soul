@@ -74,7 +74,6 @@ public abstract class Magic_Base : MonoBehaviour {
     }
 
     protected abstract void UseMagic_Son();
-
     
     void FixedUpdate() {
         if (m_display) {

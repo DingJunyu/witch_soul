@@ -47,4 +47,4 @@ MonoBehaviour:
   pu_oneTime: 0
   pu_coolDownTime: 0
   pu_magicComsumption: 2
-  pu_healData: 4
+  pu_healData: 5
