@@ -1294,6 +1294,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fa866cd2c62f0c4468b72702427850c7, type: 2}
+    - target: {fileID: 2677612691680729627, guid: ba11474c19fc13a4e861d3d71c10edeb,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba11474c19fc13a4e861d3d71c10edeb, type: 3}
 --- !u!1 &153705542
@@ -1538,7 +1543,7 @@ PrefabInstance:
     - target: {fileID: 1763682457041032914, guid: f16078196cf96174c8f837137a82d071,
         type: 3}
       propertyPath: pu_speed
-      value: 2.1
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16078196cf96174c8f837137a82d071, type: 3}
@@ -8891,6 +8896,11 @@ PrefabInstance:
       propertyPath: pu_startMovingAtX
       value: 132
       objectReference: {fileID: 0}
+    - target: {fileID: 1763682457041032914, guid: f16078196cf96174c8f837137a82d071,
+        type: 3}
+      propertyPath: pu_speed
+      value: 1.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16078196cf96174c8f837137a82d071, type: 3}
 --- !u!4 &1099704185 stripped
@@ -12942,7 +12952,7 @@ PrefabInstance:
     - target: {fileID: 1763682457041032914, guid: f16078196cf96174c8f837137a82d071,
         type: 3}
       propertyPath: pu_speed
-      value: 2.1
+      value: 1.38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16078196cf96174c8f837137a82d071, type: 3}
@@ -13442,6 +13452,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8015052663997577536, guid: 7a72bc3898add4b46bb46172fc1398ef,
+        type: 3}
+      propertyPath: pu_recoveryPerGap
+      value: 0.78
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a72bc3898add4b46bb46172fc1398ef, type: 3}
 --- !u!1001 &1644391470
@@ -13648,7 +13663,7 @@ PrefabInstance:
     - target: {fileID: 1763682457041032914, guid: f16078196cf96174c8f837137a82d071,
         type: 3}
       propertyPath: pu_speed
-      value: 5.05
+      value: 2.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f16078196cf96174c8f837137a82d071, type: 3}
@@ -21545,6 +21560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: pu_detectiveDis
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763682457041032914, guid: f16078196cf96174c8f837137a82d071,
+        type: 3}
+      propertyPath: pu_speed
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7505685287282500671, guid: f16078196cf96174c8f837137a82d071,
         type: 3}
