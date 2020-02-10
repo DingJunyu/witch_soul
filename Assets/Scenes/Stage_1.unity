@@ -13455,7 +13455,7 @@ PrefabInstance:
     - target: {fileID: 8015052663997577536, guid: 7a72bc3898add4b46bb46172fc1398ef,
         type: 3}
       propertyPath: pu_recoveryPerGap
-      value: 0.78
+      value: 1.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a72bc3898add4b46bb46172fc1398ef, type: 3}
