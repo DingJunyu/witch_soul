@@ -8,7 +8,7 @@ public class MagicSystem : MonoBehaviour {
     private float m_magicPoint;
 
     public float pu_recoveryPerGap = 2f;
-    private const float mc_gap = 3f;
+    private const float mc_gap = 5f;
     private float m_lastRecoveryTime = 0f;
 
     public void UseMagic(float func_magicConsumption) {
