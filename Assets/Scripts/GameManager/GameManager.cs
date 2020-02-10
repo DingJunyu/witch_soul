@@ -135,7 +135,8 @@ public class GameManager : MonoBehaviour {
                 return;
             m_endMark = true;
             o_textPlateForEndGame_text.text = "Clear";
-            o_button_nextStage.SetActive(true);
+            if (pu_needNextStage)
+                o_button_nextStage.SetActive(true);
             EndGameMenu(true);
         }
         if (!o_player.GetComponent<LifeSystem>().ReferAlive()) {
